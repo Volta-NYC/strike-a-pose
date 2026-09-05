@@ -1,62 +1,28 @@
-# Purpose
-This repository is the base template that should be used for all future businesses, including basic files such as navbar, footer, and other configs.
+# Strike A Pose
 
-# Business Name
+A frontend-only Next.js website for Strike A Pose Photo Booth & Party Services.
+Built around the original black-and-gold brand, real local event media, and the
+client's revised blueprint and package documents.
 
-Replace this README with business-specific details.
+## Develop and validate
 
----
-
-## 🚀 Overview
-
-Short description of the business and what this website is for.
-
-Example:
-"This website serves as the official online presence for [Business Name], showcasing services, contact information, and brand identity."
-
----
-
-## 🛠 Tech Stack
-
-- Next.js (App Router)
-- TypeScript
-- Tailwind CSS
-- Hosted on Vercel
-
----
-
-## 📂 Project Structure
-
-- `src/app` → App Router (homepage, layout, globals)
-- `src/app/pages` → Site pages (About, Contact, etc.)
-- `src/lib/components` → Shared UI components (Navbar/Footer)
-- `public` → Static assets
-
----
-
-## 🧑‍💻 Development
-
-Install dependencies:
-
-```bash
-npm install
-npm install --save-dev @types/react
-```
-
-Run locally:
-
-```bash
+```sh
+npm ci
 npm run dev
+npm run typecheck
+npm run build
+npm start
 ```
 
----
+The App Router pages include Home, Services, Packages, Backdrops, Gallery,
+Contact & Book Now, Privacy, and Terms. Business data is centralized in
+`src/lib/site-data.ts`; reusable components are in `src/lib/components`.
 
-## ✏️ Customization Checklist
+All photos and videos are served from `public`. See `docs/asset-sources.json`
+for provenance and `docs/implementation-notes.md` for content decisions.
 
-- [ ] Replace Business Name in navbar + footer
-- [ ] Update metadata in `src/app/layout.tsx`
-- [ ] Replace homepage content (`src/app/page.tsx`)
-- [ ] Update About + Contact pages (`src/app/pages/*`)
-- [ ] Replace favicon + assets in `public/`
-- [ ] Update SEO metadata
-- [ ] (Optional) Update Volta credit link text / URL in the footer
+The inquiry form creates an email draft for the visitor to send. There is no
+backend submission, account system, payment processing, or automatic booking.
+Reviews are sourced static quotations, not an automatically synchronized feed.
+
+Deploy through the repository's existing Next.js hosting workflow.

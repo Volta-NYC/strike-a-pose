@@ -98,6 +98,7 @@ p {
   line-height: 1.75;
 }
 .container {
+  max-width: none;
   width: min(1200px, calc(100% - 96px));
   margin-inline: auto;
 }
@@ -221,9 +222,9 @@ p {
   inset: 0;
   background: linear-gradient(
     90deg,
-    #11100e 25%,
-    rgba(17, 16, 14, 0.93) 40%,
-    rgba(17, 16, 14, 0.2) 75%,
+    #11100e 33%,
+    rgba(17, 16, 14, 0.98) 47%,
+    rgba(17, 16, 14, 0.4) 70%,
     rgba(17, 16, 14, 0.1)
   );
 }
@@ -327,7 +328,15 @@ p {
   aspect-ratio: auto;
   background: #eeece7;
 }
+.experience {
+  display: flex;
+  flex-direction: column;
+}
 .experience-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 25px 8px 0;
 }
@@ -339,10 +348,10 @@ p {
   justify-content: center;
 }
 .experience-copy p {
+  flex: 1;
   color: var(--muted);
   font-size: 0.94rem;
   margin: 16px 0;
-  min-height: 130px;
 }
 .spin-art {
   position: relative;
@@ -611,9 +620,6 @@ p {
   .experience-grid {
     gap: 20px;
   }
-  .experience-copy p {
-    min-height: 170px;
-  }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -686,9 +692,6 @@ p {
   .experience-copy h3 {
     font-size: 1.4rem;
     min-height: 75px;
-  }
-  .experience-copy p {
-    min-height: 215px;
   }
   .enhance-grid {
     gap: 28px;
@@ -926,8 +929,10 @@ p {
 .package-card {
   padding: 38px;
   border: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
+  row-gap: 0;
   scroll-margin-top: 110px;
   background: linear-gradient(135deg, #f7f5ee, white 50%);
 }
@@ -954,11 +959,9 @@ p {
 .hours span {
   color: #9e9783;
 }
-.package-card .inclusion-list {
-  flex: 1;
-}
 .package-card .button {
-  align-self: flex-start;
+  align-self: end;
+  justify-self: start;
   margin-top: 10px;
 }
 .addon-grid {
