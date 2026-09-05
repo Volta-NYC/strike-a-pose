@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CTA, PageIntro, Photo, SpinArt } from "@/lib/components/site-ui";
+import { CTA, Photo, SpinArt } from "@/lib/components/site-ui";
+import GalleryWebglHero from "@/lib/components/gallery-webgl-hero";
 import { backdrops, packages } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Services",
@@ -10,11 +11,11 @@ export const metadata: Metadata = {
 export default function Services() {
   return (
     <>
-      <PageIntro
+      <GalleryWebglHero
         eyebrow="The experience is everything"
         title="A little glamour. A lot of fun."
         description="From the first pose to the last heartfelt message, give your guests something to remember."
-        image="nova-yacht.webp"
+        className="services-webgl-hero"
       />
       <div className="container service-stories">
         {packages.map((p, i) => (

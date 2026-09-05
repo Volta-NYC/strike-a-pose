@@ -28,9 +28,9 @@ const fragmentShader = `
     float light = glow(uv, a, 0.025) + glow(uv, b, 0.019) + glow(uv, c, 0.014);
     float ribbon = sin((uv.x * 4.2 + uv.y * 2.0) + t * 3.0) * 0.04;
     float vignette = smoothstep(1.30, 0.20, length(uv - vec2(0.9, 0.52)));
-    vec3 base = vec3(0.045, 0.040, 0.028);
+    vec3 base = vec3(0.16, 0.10, 0.035);
     vec3 gold = vec3(0.80, 0.62, 0.23);
-    vec3 color = base + gold * (light * 0.17 + ribbon + 0.055) * vignette;
+    vec3 color = base + gold * (light * 0.24 + ribbon + 0.10) * vignette;
     gl_FragColor = vec4(color, 1.0);
   }
 `;
@@ -43,7 +43,17 @@ function compile(gl: WebGLRenderingContext, type: number, source: string) {
   return gl.getShaderParameter(shader, gl.COMPILE_STATUS) ? shader : null;
 }
 
-export default function GalleryWebglHero() {
+export default function GalleryWebglHero({
+  eyebrow = "Through our lens",
+  title = "Good times. Great keepsakes.",
+  description = "A glimpse of our booths, our celebrations, and the people who make every event special.",
+  className = "gallery-webgl-hero",
+}: {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  className?: string;
+}) {
   const canvas = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -105,16 +115,13 @@ export default function GalleryWebglHero() {
   }, []);
 
   return (
-    <section className="page-hero gallery-webgl-hero">
+    <section className={`page-hero webgl-hero ${className}`}>
       <canvas className="page-hero-webgl" ref={canvas} aria-hidden="true" />
       <div className="page-hero-shade" />
       <div className="page-intro container page-hero-content">
-        <p className="eyebrow">Through our lens</p>
-        <h1>Good times. Great keepsakes.</h1>
-        <p className="intro-copy">
-          A glimpse of our booths, our celebrations, and the people who make
-          every event special.
-        </p>
+        <p className="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p className="intro-copy">{description}</p>
       </div>
     </section>
   );
