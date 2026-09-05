@@ -10,11 +10,11 @@ uniform float time;
 void main(){
  vec2 uv=(gl_FragCoord.xy*2.-resolution)/min(resolution.x,resolution.y);
  vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.);
- float t=time*.043;
+ float t=time*.095;
  vec2 p=uv*.82;
- p+=vec2(sin(p.y*1.5-t),cos(p.x*1.25+t))*.19;
- p+=vec2(sin((p.x+p.y)*1.1+t),cos((p.x-p.y)*1.25-t))*.095;
- p+=(m-p)*exp(-1.35*length(uv-m))*.035;
+ p+=vec2(sin(p.y*1.5-t),cos(p.x*1.25+t))*.23;
+ p+=vec2(sin((p.x+p.y)*1.1+t),cos((p.x-p.y)*1.25-t))*.12;
+ p+=(m-p)*exp(-1.35*length(uv-m))*.075;
  float current=sin(p.x*2.45+sin(p.y*1.55-t)*1.25+sin((p.x+p.y)*1.05+t)*.72);
  float drift=sin(p.y*2.05+sin(p.x*1.35+t)*1.05);
  float mist=smoothstep(.18,.92,.5+.5*(current*.68+drift*.32));
@@ -88,6 +88,8 @@ export default function EventField() {
       resize();
       pointer.x += (target.x - pointer.x) * 0.035;
       pointer.y += (target.y - pointer.y) * 0.035;
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
       gl.uniform2f(resolution, canvas.width, canvas.height);
       gl.uniform2f(pointerLocation, pointer.x, pointer.y);
       gl.uniform1f(clock, reduced ? 9 : (now - start) / 1000);

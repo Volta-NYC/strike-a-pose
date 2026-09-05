@@ -268,7 +268,7 @@ p {
     radial-gradient(ellipse 64% 62% at 93% 74%, rgba(164, 80, 84, 0.42), transparent 70%),
     radial-gradient(ellipse 58% 46% at 50% 108%, rgba(236, 201, 111, 0.48), transparent 72%);
   background-size: 155% 145%, 150% 160%, 175% 135%;
-  animation: background-mist-drift 26s ease-in-out infinite alternate;
+  animation: background-mist-drift 16s ease-in-out infinite alternate;
   will-change: background-position;
 }
 @keyframes background-mist-drift {
@@ -287,7 +287,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
     radial-gradient(ellipse 72% 70% at 96% 80%, rgba(164, 80, 84, 0.17), transparent 72%),
     radial-gradient(ellipse 62% 50% at 50% 108%, rgba(236, 201, 111, 0.2), transparent 74%);
   background-size: 160% 160%, 145% 165%, 180% 140%;
-  animation: section-mist-drift 24s ease-in-out infinite alternate;
+  animation: section-mist-drift 16s ease-in-out infinite alternate;
 }
 @keyframes section-mist-drift {
   0% {
