@@ -1192,15 +1192,21 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   color: var(--gold-dark);
 }
 .backdrop-more {
-  margin-top: 30px;
+  margin-top: 42px;
   border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-block: 18px;
+  text-align: center;
 }
 .backdrop-more summary {
-  width: fit-content;
+  width: 100%;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  color: var(--ink);
+  font-size: 0.9rem;
+  padding: 14px 0;
+  cursor: pointer;
 }
 .backdrop-more[open] summary {
   border-bottom: 1px solid var(--line);
