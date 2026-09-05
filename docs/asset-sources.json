@@ -1,0 +1,83 @@
+{
+  "website": [
+    {
+      "file": "logo-1.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_8bf448051d094cdd9af869d47342f014~mv2.jpg",
+      "label": "Strike A Pose logo"
+    },
+    {
+      "file": "crisp-white-backdrop-2.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_e86088f2d90a4dd6a2125213fe97f40b~mv2.jpg",
+      "label": "Crisp White Backdrop"
+    },
+    {
+      "file": "silver-backdrop-3.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_d0e7cf76273744a7add352fe15a2cca9~mv2.jpg",
+      "label": "Silver Backdrop"
+    },
+    {
+      "file": "gold-shimmer-wall-backdrop-4.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_ded624f8b66f4ce4963a14b74917d061~mv2.jpg",
+      "label": "Gold Shimmer Wall Backdrop"
+    },
+    {
+      "file": "midnight-black-backdrop-5.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_d1f096ac364d49a0bf84e5fd4118981e~mv2.jpg",
+      "label": "Midnight Black Backdrop"
+    },
+    {
+      "file": "rose-gold-backdrop-6.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_9ede4426d59d4f41ac915c9fabfa75f0~mv2.jpg",
+      "label": "Rose Gold Backdrop"
+    },
+    {
+      "file": "rustic-wood-wall-backdrop-7.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_1b1c2b0d3f5d4532aeeea4ae056e696a~mv2.jpg",
+      "label": "Rustic Wood Wall Backdrop"
+    },
+    {
+      "file": "luxury-gold-backdrop-8.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_d53a0e38eb814e8dadcc7106c89b727c~mv2.jpg",
+      "label": "Luxury Gold Backdrop"
+    },
+    {
+      "file": "grass-hedge-wall-backdrop-9.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_ffbac3b83ce14e84a4c45b0b472f991b~mv2.jpg",
+      "label": "Grass Hedge Wall Backdrop"
+    },
+    {
+      "file": "custom-step-repeat-backdrop-10.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_a0a6b812e0ac4b4cba16428c00e06a70~mv2.jpg",
+      "label": "Custom Step & Repeat Backdrop"
+    },
+    {
+      "file": "champagne-backdrop-11.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_53b3859780cf4086bf7108608b4524fa~mv2.jpg",
+      "label": "Champagne Backdrop"
+    },
+    {
+      "file": "white-flower-wall-backdrop-12.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_5d2beb2b7a134748a60994a1334cbbf8~mv2.jpg",
+      "label": "White Flower Wall Backdrop"
+    },
+    {
+      "file": "d63433c4-bb7d-40ff-8a7e-2918069fbfad-mp4-14.webp",
+      "source": "https://static.wixstatic.com/media/19f63c_49601ef092614854804711fed73709ddf000.jpg",
+      "label": "d63433c4-bb7d-40ff-8a7e-2918069fbfad.mp4"
+    }
+  ],
+  "suppliedDocument": "Strike A Pose Pictures.docx",
+  "documentImages": {
+    "2": "nova-yacht",
+    "3": "nova-guest",
+    "4": "nova-detail",
+    "5": "nova-side",
+    "6": "nova-luau",
+    "7": "luau-friends",
+    "8": "luau-celebration",
+    "9": "red-carpet",
+    "12": "audio-guest-book",
+    "13": "mirror-booth"
+  },
+  "video": "https://video.wixstatic.com/video/19f63c_49601ef092614854804711fed73709dd/480p/mp4/file.mp4"
+}
