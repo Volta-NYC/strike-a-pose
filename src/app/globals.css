@@ -242,6 +242,16 @@ p {
     rgba(23, 21, 16, 0.05)
   );
 }
+.event-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
 .hero-content {
   z-index: 2;
   position: relative;
@@ -603,30 +613,54 @@ p {
   display: flex;
   gap: 24px;
 }
+.page-hero {
+  min-height: 430px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  background: #171510;
+}
+.page-hero-photo,
+.page-hero-shade {
+  position: absolute;
+  inset: 0;
+}
+.page-hero-photo {
+  z-index: 0;
+}
+.page-hero-photo img {
+  object-fit: cover;
+  object-position: center 44%;
+}
+.page-hero-shade {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(21, 19, 14, 0.9), rgba(21, 19, 14, 0.55) 55%, rgba(21, 19, 14, 0.25)),
+    linear-gradient(0deg, rgba(21, 19, 14, 0.66), transparent 64%);
+}
 .page-intro {
-  padding-block: 75px 55px;
+  position: relative;
+  z-index: 3;
+  width: min(1200px, calc(100% - 96px));
+  margin-inline: auto;
+  padding-block: 82px 68px;
   text-align: center;
 }
 .page-intro h1 {
   max-width: 1000px;
   margin: auto;
+  color: #fff;
+}
+.page-intro .eyebrow {
+  color: #e2c571;
 }
 .intro-copy {
   max-width: 660px;
   margin: 24px auto 0;
-  color: var(--muted);
-}
-
-/* The background has a low-contrast film grain, with the canvas supplying a slow
-   changing pool of light rather than a decorative effect layered over content. */
-.ambient-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.9;
+  color: #f0eadf;
 }
 .js-reveal {
   opacity: 0;
@@ -907,10 +941,17 @@ p {
     gap: 18px;
   }
   .page-intro {
-    padding-block: 48px 35px;
+    width: calc(100% - 40px);
+    padding-block: 80px 45px;
   }
   .intro-copy {
     font-size: 1rem;
+  }
+  .page-hero {
+    min-height: 390px;
+  }
+  .page-hero-photo img {
+    object-position: center;
   }
 }
 @media (prefers-reduced-motion: reduce) {

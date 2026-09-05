@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import EventField from "./event-field";
 export function Photo({
   src,
   alt,
@@ -43,16 +44,31 @@ export function PageIntro({
   eyebrow,
   title,
   description,
+  image,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  image: string;
 }) {
   return (
-    <section className="page-intro container">
-      <p className="eyebrow">{eyebrow}</p>
-      <h1>{title}</h1>
-      <p className="intro-copy">{description}</p>
+    <section className="page-hero">
+      <div className="page-hero-photo">
+        <Image
+          src={`/images/${image}`}
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+        />
+      </div>
+      <EventField />
+      <div className="page-hero-shade" />
+      <div className="page-intro container page-hero-content">
+        <p className="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p className="intro-copy">{description}</p>
+      </div>
     </section>
   );
 }

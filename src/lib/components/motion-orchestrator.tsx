@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 const revealSelector = [
-  ".page-intro > *",
+  ".page-hero-content > *",
   ".section-heading > *",
   ".experience",
   ".enhance-grid > *",
@@ -13,17 +13,24 @@ const revealSelector = [
   ".credential",
   ".cta .container > *",
   ".service-story > *",
-  ".gallery-grid > *",
+  ".event-gallery > *",
+  ".backdrop-grid > *",
   ".package-card",
+  ".addon-grid > *",
+  ".faq-layout > *",
+  ".contact-layout > *",
+  ".legal-page > *",
 ].join(",");
 
+/** Keeps transitions route-aware, so client navigation cannot leave new copy hidden. */
 export default function MotionOrchestrator() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const reveals = Array.from(document.querySelectorAll<HTMLElement>(revealSelector));
-    reveals.forEach((element, index) => {
-      element.classList.add("js-reveal", `reveal-${index % 3}`);
-    });
+    const knownReveals = new WeakSet<HTMLElement>();
+    const knownPhotos = new WeakSet<HTMLElement>();
+    const activePhotos = new Set<HTMLElement>();
+    let revealIndex = 0;
+    let frame = 0;
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -33,28 +40,42 @@ export default function MotionOrchestrator() {
           }
         });
       },
-      { threshold: 0.14, rootMargin: "0px 0px -30px" },
+      { threshold: 0.12, rootMargin: "0px 0px -8%" },
     );
-    reveals.forEach((element) => revealObserver.observe(element));
-
-    const photos = Array.from(
-      document.querySelectorAll<HTMLElement>(".photo[data-parallax]"),
-    );
-    const active = new Set<HTMLElement>();
-    const parallaxObserver = new IntersectionObserver(
+    const photoObserver = new IntersectionObserver(
       (entries) =>
         entries.forEach((entry) => {
-          if (entry.isIntersecting) active.add(entry.target as HTMLElement);
-          else active.delete(entry.target as HTMLElement);
+          if (entry.isIntersecting) activePhotos.add(entry.target as HTMLElement);
+          else activePhotos.delete(entry.target as HTMLElement);
         }),
       { rootMargin: "120px 0px" },
     );
-    photos.forEach((photo) => parallaxObserver.observe(photo));
-    let frame = 0;
+    const registerReveal = (element: HTMLElement) => {
+      if (knownReveals.has(element)) return;
+      knownReveals.add(element);
+      element.classList.add("js-reveal", `reveal-${revealIndex++ % 3}`);
+      const bounds = element.getBoundingClientRect();
+      if (bounds.top < window.innerHeight * 0.94 && bounds.bottom > 0) {
+        element.classList.add("is-inview");
+      } else {
+        revealObserver.observe(element);
+      }
+    };
+    const registerPhoto = (element: HTMLElement) => {
+      if (knownPhotos.has(element)) return;
+      knownPhotos.add(element);
+      photoObserver.observe(element);
+    };
+    const registerTree = (root: ParentNode) => {
+      if (root instanceof HTMLElement && root.matches(revealSelector)) registerReveal(root);
+      root.querySelectorAll<HTMLElement>(revealSelector).forEach(registerReveal);
+      if (root instanceof HTMLElement && root.matches(".photo[data-parallax]")) registerPhoto(root);
+      root.querySelectorAll<HTMLElement>(".photo[data-parallax]").forEach(registerPhoto);
+    };
     const updateParallax = () => {
       frame = 0;
       const midpoint = window.innerHeight / 2;
-      active.forEach((photo) => {
+      activePhotos.forEach((photo) => {
         const image = photo.querySelector("img");
         if (!image) return;
         const bounds = photo.getBoundingClientRect();
@@ -65,12 +86,23 @@ export default function MotionOrchestrator() {
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(updateParallax);
     };
+    const mutations = new MutationObserver((records) => {
+      records.forEach((record) =>
+        record.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) registerTree(node as HTMLElement);
+        }),
+      );
+      onScroll();
+    });
+    registerTree(document);
+    mutations.observe(document.body, { childList: true, subtree: true });
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     updateParallax();
     return () => {
+      mutations.disconnect();
       revealObserver.disconnect();
-      parallaxObserver.disconnect();
+      photoObserver.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);

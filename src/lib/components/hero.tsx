@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import EventField from "./event-field";
 export default function Hero() {
   const media = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -37,6 +38,7 @@ export default function Hero() {
           priority
         />
       </div>
+      <EventField />
       <div className="hero-shade" />
       <div className="container hero-content">
         <p className="eyebrow">Strike A Pose · Photo Booth & Party Services</p>

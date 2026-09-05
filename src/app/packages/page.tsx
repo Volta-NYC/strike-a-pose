@@ -14,6 +14,7 @@ export default function Packages() {
         eyebrow="Your celebration, your way"
         title="Find your perfect package."
         description="Choose your experience. Pick your hours. Add the details that make it yours."
+        image="luxury-gold-backdrop-8.webp"
       />
       <section className="container package-grid" aria-label="Event packages">
         {packages.map((p) => (

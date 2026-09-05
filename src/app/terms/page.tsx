@@ -14,6 +14,7 @@ export default function Terms() {
         eyebrow="The practical details"
         title="Booking terms."
         description="Please review these details before confirming your event."
+        image="mirror-booth.webp"
       />
       <section className="container legal-page">
         <BookingPolicy />

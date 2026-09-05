@@ -14,6 +14,7 @@ export default function Backdrops() {
         eyebrow="Set the scene"
         title="The perfect backdrop for you."
         description="Timeless neutrals, a little shimmer, or a statement wall. Find the finishing touch for your photo booth experience."
+        image="gold-shimmer-wall-backdrop-4.webp"
       />
       <section
         className="container backdrop-grid"

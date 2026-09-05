@@ -54,6 +54,7 @@ export default function Gallery() {
         eyebrow="Through our lens"
         title="Good times. Great keepsakes."
         description="A glimpse of our booths, our celebrations, and the people who make every event special."
+        image="luau-friends.webp"
       />
       <section className="container event-gallery" aria-label="Event photos">
         {photos.map(([src, caption, alt]) => (

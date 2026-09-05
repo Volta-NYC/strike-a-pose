@@ -13,6 +13,7 @@ export default function Privacy() {
         eyebrow="Your information"
         title="Website privacy."
         description="A simple explanation of how this website handles your inquiry."
+        image="nova-detail.webp"
       />
       <section className="container legal-page">
         <h2>Information you choose to share</h2>
