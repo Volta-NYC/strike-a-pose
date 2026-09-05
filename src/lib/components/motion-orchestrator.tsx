@@ -29,10 +29,7 @@ export default function MotionOrchestrator() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const knownReveals = new WeakSet<HTMLElement>();
-    const knownPhotos = new WeakSet<HTMLElement>();
-    const activePhotos = new Set<HTMLElement>();
     let revealIndex = 0;
-    let frame = 0;
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,14 +40,6 @@ export default function MotionOrchestrator() {
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -8%" },
-    );
-    const photoObserver = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) activePhotos.add(entry.target as HTMLElement);
-          else activePhotos.delete(entry.target as HTMLElement);
-        }),
-      { rootMargin: "120px 0px" },
     );
     const registerReveal = (element: HTMLElement) => {
       if (knownReveals.has(element)) return;
@@ -63,30 +52,9 @@ export default function MotionOrchestrator() {
         revealObserver.observe(element);
       }
     };
-    const registerPhoto = (element: HTMLElement) => {
-      if (knownPhotos.has(element)) return;
-      knownPhotos.add(element);
-      photoObserver.observe(element);
-    };
     const registerTree = (root: ParentNode) => {
       if (root instanceof HTMLElement && root.matches(revealSelector)) registerReveal(root);
       root.querySelectorAll<HTMLElement>(revealSelector).forEach(registerReveal);
-      if (root instanceof HTMLElement && root.matches(".photo[data-parallax], .page-hero-photo[data-parallax]")) registerPhoto(root);
-      root.querySelectorAll<HTMLElement>(".photo[data-parallax], .page-hero-photo[data-parallax]").forEach(registerPhoto);
-    };
-    const updateParallax = () => {
-      frame = 0;
-      const midpoint = window.innerHeight / 2;
-      activePhotos.forEach((photo) => {
-        const image = photo.querySelector("img");
-        if (!image) return;
-        const bounds = photo.getBoundingClientRect();
-        const distance = (bounds.top + bounds.height / 2 - midpoint) / window.innerHeight;
-        image.style.transform = `translate3d(0, ${Math.max(-34, Math.min(34, distance * -60))}px, 0) scale(1.11)`;
-      });
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(updateParallax);
     };
     const mutations = new MutationObserver((records) => {
       records.forEach((record) =>
@@ -94,20 +62,12 @@ export default function MotionOrchestrator() {
           if (node.nodeType === Node.ELEMENT_NODE) registerTree(node as HTMLElement);
         }),
       );
-      onScroll();
     });
     registerTree(document);
     mutations.observe(document.body, { childList: true, subtree: true });
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    updateParallax();
     return () => {
       mutations.disconnect();
       revealObserver.disconnect();
-      photoObserver.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
     };
   }, []);
 

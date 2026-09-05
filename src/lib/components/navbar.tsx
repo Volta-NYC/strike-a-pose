@@ -15,7 +15,12 @@ export default function Navbar() {
   const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     setOpen(false);
+    window.scrollTo(0, 0);
   }, [path]);
+  const closeAndReturnToTop = () => {
+    setOpen(false);
+    window.scrollTo(0, 0);
+  };
   return (
     <header className="site-header">
       <nav
@@ -32,7 +37,7 @@ export default function Navbar() {
           href="/"
           className="brand"
           aria-label="Strike A Pose home"
-          onClick={() => setOpen(false)}
+          onClick={closeAndReturnToTop}
         >
           <Image
             src="/images/logo-transparent.png"
@@ -56,7 +61,7 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              onClick={() => setOpen(false)}
+              onClick={closeAndReturnToTop}
               aria-current={path === href ? "page" : undefined}
             >
               {label}
@@ -64,7 +69,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
-            onClick={() => setOpen(false)}
+            onClick={closeAndReturnToTop}
             className="button gold nav-book"
             aria-current={path === "/contact" ? "page" : undefined}
           >

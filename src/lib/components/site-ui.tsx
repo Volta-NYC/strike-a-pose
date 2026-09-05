@@ -14,10 +14,7 @@ export function Photo({
   className?: string;
 }) {
   return (
-    <div
-      className={`photo ${contain ? "contain" : ""} ${className}`}
-      data-parallax
-    >
+    <div className={`photo ${contain ? "contain" : ""} ${className}`}>
       <Image
         src={`/images/${src}`}
         alt={alt}
@@ -52,7 +49,7 @@ export function PageIntro({
 }) {
   return (
     <section className="page-hero">
-      <div className="page-hero-photo" data-parallax>
+      <div className="page-hero-photo">
         <Image
           src={`/images/${image}`}
           alt=""

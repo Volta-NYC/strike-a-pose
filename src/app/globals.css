@@ -222,7 +222,7 @@ p {
 .hero {
   position: relative;
   isolation: isolate;
-  min-height: 640px;
+  min-height: calc(100svh - 88px);
   background: #171510;
   color: white;
   overflow: hidden;
@@ -239,7 +239,6 @@ p {
 .hero-photo img {
   object-fit: cover;
   object-position: center 42%;
-  transform: scale(1.08);
 }
 .hero-shade {
   z-index: 1;
@@ -383,10 +382,10 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .photo {
   position: relative;
   aspect-ratio: 4/5;
-  overflow: visible;
-  border: 2px solid var(--gold);
-  background: linear-gradient(135deg, rgba(226, 200, 120, 0.24), rgba(138, 104, 48, 0.18));
-  box-shadow: 0 18px 38px rgba(26, 20, 16, 0.18), inset 0 0 0 1px rgba(242, 234, 214, 0.3);
+  overflow: hidden;
+  border: 1px solid var(--gold);
+  background: #211e17;
+  box-shadow: 0 14px 28px rgba(26, 20, 16, 0.14);
 }
 .photo::before,
 .photo::after {
@@ -396,23 +395,16 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   z-index: 3;
 }
 .photo::before {
-  inset: 8px;
-  border: 1px solid rgba(226, 200, 120, 0.78);
+  inset: 6px;
+  border: 1px solid rgba(226, 200, 120, 0.68);
 }
 .photo::after {
-  inset: -9px;
-  background:
-    linear-gradient(45deg, transparent 0 44%, var(--gold) 44% 56%, transparent 56%) top left / 28px 28px no-repeat,
-    linear-gradient(-45deg, transparent 0 44%, var(--gold) 44% 56%, transparent 56%) top right / 28px 28px no-repeat,
-    linear-gradient(-45deg, transparent 0 44%, var(--gold) 44% 56%, transparent 56%) bottom left / 28px 28px no-repeat,
-    linear-gradient(45deg, transparent 0 44%, var(--gold) 44% 56%, transparent 56%) bottom right / 28px 28px no-repeat;
+  display: none;
 }
 .photo img {
   object-fit: cover;
   object-position: center;
-  clip-path: inset(9px);
   z-index: 1;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .photo.contain img {
   object-fit: contain;
@@ -604,8 +596,10 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 }
 .credential {
   padding: 24px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border: 1px solid rgba(226, 200, 120, 0.66);
+  background: #302817 !important;
+  color: #fff9e9;
+  animation: none !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -617,8 +611,11 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   font-size: 2rem;
   color: var(--gold-dark);
 }
+.credential strong {
+  color: #fff9e9;
+}
 .credential p {
-  color: var(--muted);
+  color: #f1dda2;
   font-size: 0.875rem;
 }
 .cta {
@@ -729,7 +726,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   gap: 24px;
 }
 .page-hero {
-  min-height: 430px;
+  min-height: calc(100svh - 88px);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -749,7 +746,6 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .page-hero-photo img {
   object-fit: cover;
   object-position: center 44%;
-  transform: scale(1.08);
 }
 .page-hero-shade {
   z-index: 2;
@@ -802,11 +798,6 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .js-reveal.is-inview {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-}
-.experience .photo:hover img,
-.preview-grid .photo:hover img,
-.enhance .photo:hover img {
-  transform: scale(1.075) !important;
 }
 @media (min-width: 1600px) {
   .hero {
@@ -931,7 +922,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
     padding-block: 58px;
   }
   .hero {
-    min-height: 640px;
+    min-height: calc(100svh - 76px);
     align-items: flex-end;
   }
   .hero-photo {
@@ -1092,7 +1083,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
     font-size: 1rem;
   }
   .page-hero {
-    min-height: 390px;
+    min-height: calc(100svh - 76px);
   }
   .page-hero-photo img {
     object-position: center;
