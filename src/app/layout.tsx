@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Navbar from "@/lib/components/navbar";
 import Footer from "@/lib/components/footer";
 import MotionOrchestrator from "@/lib/components/motion-orchestrator";
+import EventField from "@/lib/components/event-field";
 export const metadata: Metadata = {
   title: {
     default: "Strike A Pose | Photo Booth & Event Experiences",
@@ -24,7 +25,10 @@ export default function RootLayout({
           Skip to content
         </a>
         <Navbar />
-        <main id="main">{children}</main>
+        <main id="main">
+          <EventField />
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

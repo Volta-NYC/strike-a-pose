@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import EventField from "./event-field";
 export function Photo({
   src,
   alt,
@@ -62,7 +61,6 @@ export function PageIntro({
           priority
         />
       </div>
-      <EventField />
       <div className="page-hero-shade" />
       <div className="page-intro container page-hero-content">
         <p className="eyebrow">{eyebrow}</p>

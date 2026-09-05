@@ -9,20 +9,22 @@ uniform vec2 resolution, pointer;
 uniform float time;
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.)),f.x),f.y);}
-float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;}return v;}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;}return v;}
 void main(){
  vec2 uv=(gl_FragCoord.xy*2.-resolution)/min(resolution.x,resolution.y);
- vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.); float t=time*.1;
- float f=fbm(uv*1.3+vec2(t,-t*.7));
- float shimmer=pow(noise(uv*110.+vec2(t*5.,-t*3.)),17.0);
- float pulse=exp(-22.*length(uv-m*.32))*.09;
- vec3 brass=vec3(.95,.69,.28), rose=vec3(.94,.28,.42), blue=vec3(.30,.52,.82);
- vec3 color=mix(brass,rose,smoothstep(.58,.9,f));
- color=mix(color,blue,smoothstep(.76,.98,f));
- gl_FragColor=vec4(color,(shimmer*.16+pulse)*(.22+f*.28));
+ vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.); float t=time*.12;
+ vec2 p=uv*1.15;
+ float f=fbm(p+vec2(t,-t*.7)+fbm(p*1.7-t));
+ float w=fbm(p*1.9+f*1.8+vec2(-t,t));
+ f+=exp(-2.8*length(uv-m*.3))*.18;
+ vec3 parchment=vec3(.94,.91,.84), brass=vec3(.70,.54,.22), rose=vec3(.62,.31,.29), plum=vec3(.30,.22,.38);
+ vec3 color=mix(parchment,brass,smoothstep(.42,.78,f)*.45);
+ color=mix(color,rose,smoothstep(.55,.88,w)*.28);
+ color=mix(color,plum,smoothstep(.70,.96,f+w*.18)*.15);
+ gl_FragColor=vec4(color,.16);
 }`;
 
-/** A subtle, pointer-reactive light field reserved for image-led heroes. */
+/** A calm, pointer-reactive field that moves behind page content. */
 export default function EventField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
