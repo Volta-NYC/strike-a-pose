@@ -14,7 +14,10 @@ export function Photo({
   className?: string;
 }) {
   return (
-    <div className={`photo ${contain ? "contain" : ""} ${className}`}>
+    <div
+      className={`photo ${contain ? "contain" : ""} ${className}`}
+      data-parallax
+    >
       <Image
         src={`/images/${src}`}
         alt={alt}

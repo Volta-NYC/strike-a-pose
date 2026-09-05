@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "@/lib/components/navbar";
 import Footer from "@/lib/components/footer";
+import AmbientCanvas from "@/lib/components/ambient-canvas";
+import MotionOrchestrator from "@/lib/components/motion-orchestrator";
 export const metadata: Metadata = {
   title: {
     default: "Strike A Pose | Photo Booth & Event Experiences",
@@ -18,6 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <AmbientCanvas />
+        <MotionOrchestrator />
         <a href="#main" className="skip-link">
           Skip to content
         </a>
