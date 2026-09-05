@@ -31,6 +31,21 @@ export default function EventField() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    const syncHeroVisibility = () => {
+      const heroIsVisible = Array.from(
+        document.querySelectorAll<HTMLElement>(".hero, .page-hero"),
+      ).some((hero) => {
+        const bounds = hero.getBoundingClientRect();
+        return bounds.top < window.innerHeight && bounds.bottom > 0;
+      });
+      canvas.classList.toggle("event-field--hero-hidden", heroIsVisible);
+    };
+    const main = document.getElementById("main");
+    const routeObserver = new MutationObserver(syncHeroVisibility);
+    routeObserver.observe(main ?? document.body, { childList: true, subtree: true });
+    window.addEventListener("scroll", syncHeroVisibility, { passive: true });
+    window.addEventListener("resize", syncHeroVisibility);
+    syncHeroVisibility();
     const gl = canvas.getContext("webgl", {
       alpha: true,
       antialias: false,
@@ -98,9 +113,18 @@ export default function EventField() {
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", syncHeroVisibility);
+      window.removeEventListener("scroll", syncHeroVisibility);
       window.removeEventListener("pointermove", move);
+      routeObserver.disconnect();
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="event-field" aria-hidden="true" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="event-field event-field--hero-hidden"
+      aria-hidden="true"
+    />
+  );
 }

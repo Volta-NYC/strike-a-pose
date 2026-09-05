@@ -256,6 +256,9 @@ p {
   opacity: 0.82;
   mix-blend-mode: multiply;
 }
+.event-field--hero-hidden {
+  display: none;
+}
 .hero-content {
   z-index: 2;
   position: relative;
