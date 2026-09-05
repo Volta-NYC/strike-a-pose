@@ -10,22 +10,23 @@ uniform float time;
 void main(){
  vec2 uv=(gl_FragCoord.xy*2.-resolution)/min(resolution.x,resolution.y);
  vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.);
- float t=time*.055;
- vec2 p=uv*.9;
- p+=vec2(sin(p.y*1.7+t),cos(p.x*1.35-t))*.16;
- p+=vec2(sin((p.y+p.x)*1.15-t*.7),cos((p.x-p.y)*1.4+t))*.08;
- p+=(m-p)*exp(-1.5*length(uv-m))*.045;
- float vein=sin(p.x*3.1+sin(p.y*2.25-t)*1.15+sin((p.x+p.y)*1.4+t)*.65);
- float fold=sin(p.y*2.6+sin(p.x*1.8+t)*.8);
- float light=smoothstep(-.78,.92,vein*.72+fold*.28);
- vec3 paper=vec3(.96,.93,.87), champagne=vec3(.79,.66,.39), rose=vec3(.66,.42,.42), ink=vec3(.24,.18,.20);
- vec3 color=mix(paper,champagne,smoothstep(.42,.85,light)*.45);
- color=mix(color,rose,smoothstep(.64,.94,light+fold*.11)*.34);
- color=mix(color,ink,smoothstep(.82,1.0,1.-light)*.14);
- gl_FragColor=vec4(color,.20);
+ float t=time*.043;
+ vec2 p=uv*.82;
+ p+=vec2(sin(p.y*1.5-t),cos(p.x*1.25+t))*.19;
+ p+=vec2(sin((p.x+p.y)*1.1+t),cos((p.x-p.y)*1.25-t))*.095;
+ p+=(m-p)*exp(-1.35*length(uv-m))*.035;
+ float current=sin(p.x*2.45+sin(p.y*1.55-t)*1.25+sin((p.x+p.y)*1.05+t)*.72);
+ float drift=sin(p.y*2.05+sin(p.x*1.35+t)*1.05);
+ float mist=smoothstep(.18,.92,.5+.5*(current*.68+drift*.32));
+ float gleam=smoothstep(.67,.94,.5+.5*sin(p.x*3.35-p.y*1.18+t*.55+drift));
+ vec3 cloud=vec3(.95,.92,.86), champagne=vec3(.91,.75,.43), blush=vec3(.76,.52,.47);
+ vec3 color=mix(cloud,champagne,mist*.34);
+ color=mix(color,blush,smoothstep(.74,1.,mist)*.16);
+ color=mix(color,vec3(1.,.91,.64),gleam*.52);
+ gl_FragColor=vec4(color,.23);
 }`;
 
-/** A slow, seamless marble field that moves behind non-hero page content. */
+/** A slow, seamless water-mist field that moves behind non-hero page content. */
 export default function EventField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
