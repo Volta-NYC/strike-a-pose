@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CTA, PageIntro } from "@/lib/components/site-ui";
+import { CTA } from "@/lib/components/site-ui";
+import GalleryWebglHero from "@/lib/components/gallery-webgl-hero";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
@@ -67,12 +68,7 @@ const photos: [string, string, string, number, number][] = [
 export default function Gallery() {
   return (
     <>
-      <PageIntro
-        eyebrow="Through our lens"
-        title="Good times. Great keepsakes."
-        description="A glimpse of our booths, our celebrations, and the people who make every event special."
-        image="luau-celebration.webp"
-      />
+      <GalleryWebglHero />
       <section className="container event-gallery" aria-label="Event photos">
         {photos.map(([src, caption, alt, width, height]) => (
           <figure key={src}>

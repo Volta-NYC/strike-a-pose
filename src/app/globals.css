@@ -743,9 +743,17 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   background: #171510;
 }
 .page-hero-photo,
-.page-hero-shade {
+.page-hero-shade,
+.page-hero-webgl {
   position: absolute;
   inset: 0;
+}
+.page-hero-webgl {
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #18140e;
 }
 .page-hero-photo {
   z-index: 0;
@@ -759,6 +767,14 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   background:
     linear-gradient(90deg, rgba(21, 19, 14, 0.9), rgba(21, 19, 14, 0.55) 55%, rgba(21, 19, 14, 0.25)),
     linear-gradient(0deg, rgba(21, 19, 14, 0.66), transparent 64%);
+}
+.gallery-webgl-hero {
+  min-height: calc(50svh - 44px);
+}
+.gallery-webgl-hero .page-hero-shade {
+  background:
+    linear-gradient(90deg, rgba(10, 9, 6, 0.45), rgba(10, 9, 6, 0.08) 50%, rgba(10, 9, 6, 0.42)),
+    linear-gradient(0deg, rgba(10, 9, 6, 0.42), transparent 70%);
 }
 .page-intro {
   position: relative;
@@ -1092,6 +1108,9 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   }
   .page-hero {
     min-height: calc(100svh - 76px);
+  }
+  .gallery-webgl-hero {
+    min-height: calc(50svh - 38px);
   }
   .page-hero-photo img {
     object-position: center;
