@@ -746,6 +746,11 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   padding-block: 82px 68px;
   text-align: center;
 }
+.page-hero + .package-grid,
+.page-hero + .event-gallery,
+.page-hero + .contact-layout {
+  margin-top: 70px;
+}
 .page-intro h1 {
   max-width: 1000px;
   margin: auto;
@@ -864,6 +869,11 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   .hero h1 {
     font-size: 3.7rem;
   }
+  .page-hero + .package-grid,
+  .page-hero + .event-gallery,
+  .page-hero + .contact-layout {
+    margin-top: 48px;
+  }
   .hero-photo {
     inset: -80px 0;
     width: 100%;
@@ -892,6 +902,11 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 @media (max-width: 600px) {
   .container {
     width: calc(100% - 40px);
+  }
+  .page-hero + .package-grid,
+  .page-hero + .event-gallery,
+  .page-hero + .contact-layout {
+    margin-top: 38px;
   }
   .section {
     padding-block: 58px;
