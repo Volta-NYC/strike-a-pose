@@ -7,23 +7,21 @@ const fragment = `
 precision highp float;
 uniform vec2 resolution, pointer;
 uniform float time;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;}return v;}
 void main(){
  vec2 uv=(gl_FragCoord.xy*2.-resolution)/min(resolution.x,resolution.y);
- vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.);
- float t=time*.095;
- vec2 p=uv*.82;
- p+=vec2(sin(p.y*1.5-t),cos(p.x*1.25+t))*.23;
- p+=vec2(sin((p.x+p.y)*1.1+t),cos((p.x-p.y)*1.25-t))*.12;
- p+=(m-p)*exp(-1.35*length(uv-m))*.075;
- float current=sin(p.x*2.45+sin(p.y*1.55-t)*1.25+sin((p.x+p.y)*1.05+t)*.72);
- float drift=sin(p.y*2.05+sin(p.x*1.35+t)*1.05);
- float mist=smoothstep(.18,.92,.5+.5*(current*.68+drift*.32));
- float gleam=smoothstep(.67,.94,.5+.5*sin(p.x*3.35-p.y*1.18+t*.55+drift));
- vec3 cloud=vec3(.95,.92,.86), champagne=vec3(.91,.75,.43), blush=vec3(.76,.52,.47);
- vec3 color=mix(cloud,champagne,mist*.34);
- color=mix(color,blush,smoothstep(.74,1.,mist)*.16);
- color=mix(color,vec3(1.,.91,.64),gleam*.52);
- gl_FragColor=vec4(color,.52);
+ vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.);float t=time*.15;
+ vec2 p=uv*1.1;
+ float f=fbm(p+vec2(t,-t*.72)+fbm(p*1.72-t));
+ float w=fbm(p*1.86+f*1.72+vec2(-t,t*.86));
+ f+=exp(-2.5*length(uv-m*.3))*.2;
+ vec3 paper=vec3(.98,.95,.87),gold=vec3(.62,.43,.12),bronze=vec3(.40,.22,.10),gleam=vec3(1.,.82,.34);
+ vec3 color=mix(paper,gold,smoothstep(.36,.68,f));
+ color=mix(color,bronze,smoothstep(.5,.76,w)*.58);
+ color=mix(color,gleam,smoothstep(.66,.9,f+w*.18)*.62);
+ gl_FragColor=vec4(color,1.);
 }`;
 
 /** A slow, seamless water-mist field that moves behind non-hero page content. */
@@ -34,7 +32,7 @@ export default function EventField() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const gl = canvas.getContext("webgl", {
-      alpha: true,
+      alpha: false,
       antialias: false,
       powerPreference: "low-power",
     });
