@@ -15,7 +15,7 @@ export default function Contact() {
         eyebrow="Let’s make memories"
         title="Your event starts here."
         description="Tell us what you’re celebrating. We’ll help you choose the right experience and confirm availability for your date."
-        image="white-flower-wall-backdrop-12.webp"
+        image="luau-friends.webp"
       />
       <section className="container contact-layout">
         <aside className="contact-details">
