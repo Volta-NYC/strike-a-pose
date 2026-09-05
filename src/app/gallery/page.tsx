@@ -71,7 +71,7 @@ export default function Gallery() {
         eyebrow="Through our lens"
         title="Good times. Great keepsakes."
         description="A glimpse of our booths, our celebrations, and the people who make every event special."
-        image="champagne-backdrop-11.webp"
+        image="luau-celebration.webp"
       />
       <section className="container event-gallery" aria-label="Event photos">
         {photos.map(([src, caption, alt, width, height]) => (
