@@ -159,12 +159,12 @@ export default function Home() {
           />
         </div>
       </section>
-      <div className="credential container">
+      <section className="credential" aria-label="NYC DOE vendor credential">
         <div>
           <strong>NYC DOE-Approved Vendor</strong>
           <p>Serving NYC Schools & Special Events</p>
         </div>
-      </div>
+      </section>
       <CTA />
     </>
   );
