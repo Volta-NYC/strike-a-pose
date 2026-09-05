@@ -53,7 +53,7 @@ export function PageIntro({
 }) {
   return (
     <section className="page-hero">
-      <div className="page-hero-photo">
+      <div className="page-hero-photo" data-parallax>
         <Image
           src={`/images/${image}`}
           alt=""

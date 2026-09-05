@@ -13,6 +13,8 @@ const revealSelector = [
   ".credential",
   ".cta .container > *",
   ".service-story > *",
+  ".backdrop-rental > *",
+  ".backdrop-choice",
   ".event-gallery > *",
   ".backdrop-grid > *",
   ".package-card",
@@ -69,8 +71,8 @@ export default function MotionOrchestrator() {
     const registerTree = (root: ParentNode) => {
       if (root instanceof HTMLElement && root.matches(revealSelector)) registerReveal(root);
       root.querySelectorAll<HTMLElement>(revealSelector).forEach(registerReveal);
-      if (root instanceof HTMLElement && root.matches(".photo[data-parallax]")) registerPhoto(root);
-      root.querySelectorAll<HTMLElement>(".photo[data-parallax]").forEach(registerPhoto);
+      if (root instanceof HTMLElement && root.matches(".photo[data-parallax], .page-hero-photo[data-parallax]")) registerPhoto(root);
+      root.querySelectorAll<HTMLElement>(".photo[data-parallax], .page-hero-photo[data-parallax]").forEach(registerPhoto);
     };
     const updateParallax = () => {
       frame = 0;
@@ -80,7 +82,7 @@ export default function MotionOrchestrator() {
         if (!image) return;
         const bounds = photo.getBoundingClientRect();
         const distance = (bounds.top + bounds.height / 2 - midpoint) / window.innerHeight;
-        image.style.transform = `translate3d(0, ${Math.max(-12, Math.min(12, distance * -22))}px, 0) scale(1.045)`;
+        image.style.transform = `translate3d(0, ${Math.max(-34, Math.min(34, distance * -60))}px, 0) scale(1.11)`;
       });
     };
     const onScroll = () => {

@@ -7,7 +7,6 @@ const links = [
   ["Home", "/"],
   ["Services", "/services"],
   ["Packages", "/packages"],
-  ["Backdrops", "/backdrops"],
   ["Gallery", "/gallery"],
 ];
 export default function Navbar() {

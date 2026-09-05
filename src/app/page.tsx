@@ -64,7 +64,7 @@ export default function Home() {
               <span aria-hidden="true">✦</span>
             </div>
             <div className="service-line">
-              <Link href="/backdrops">Beautiful Backdrops</Link>
+              <Link href="/services#backdrops">Beautiful Backdrops</Link>
               <span aria-hidden="true">↗</span>
             </div>
             <Link href="/packages#add-ons" className="button gold">

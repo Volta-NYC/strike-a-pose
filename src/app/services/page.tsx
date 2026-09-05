@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CTA, PageIntro, Photo, SpinArt } from "@/lib/components/site-ui";
-import { packages } from "@/lib/site-data";
+import { backdrops, packages } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Services",
   description:
@@ -76,6 +76,50 @@ export default function Services() {
             </Link>
           </div>
         </div>
+      </section>
+      <section className="section container backdrop-rental" id="backdrops">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Set the scene</p>
+            <h2>Rent a backdrop that makes the moment.</h2>
+          </div>
+          <Link href="/contact" className="text-link">
+            Ask about availability ↗
+          </Link>
+        </div>
+        <p className="backdrop-rental-copy">
+          From crisp and classic to full shimmer, choose a backdrop that makes
+          your photo booth feel made for your event.
+        </p>
+        <div className="backdrop-preview">
+          {backdrops.slice(0, 3).map(([name, image]) => (
+            <Link
+              href={`/contact?backdrop=${encodeURIComponent(name)}`}
+              key={name}
+              className="backdrop-choice"
+            >
+              <Photo src={image} alt={`${name} photo booth backdrop`} contain />
+              <span>{name}</span>
+            </Link>
+          ))}
+        </div>
+        <details className="backdrop-more">
+          <summary>
+            See every backdrop <span aria-hidden="true">+</span>
+          </summary>
+          <div className="backdrop-preview backdrop-expanded">
+            {backdrops.slice(3).map(([name, image]) => (
+              <Link
+                href={`/contact?backdrop=${encodeURIComponent(name)}`}
+                key={name}
+                className="backdrop-choice"
+              >
+                <Photo src={image} alt={`${name} photo booth backdrop`} contain />
+                <span>{name}</span>
+              </Link>
+            ))}
+          </div>
+        </details>
       </section>
       <CTA />
     </>

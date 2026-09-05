@@ -13,11 +13,13 @@ float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=mat2(1.6,
 void main(){
  vec2 uv=(gl_FragCoord.xy*2.-resolution)/min(resolution.x,resolution.y);
  vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.); float t=time*.1;
- float f=fbm(uv*1.2+vec2(t,-t*.7)); f+=exp(-3.4*length(uv-m*.32))*.22;
- float bands=smoothstep(.46,.88,f+sin((uv.x+uv.y)*2.0-t)*.08);
- vec3 night=vec3(.05,.045,.032), brass=vec3(.78,.60,.25), rose=vec3(.52,.18,.20);
- vec3 color=mix(night,brass,bands*.46); color=mix(color,rose,smoothstep(.68,.96,f)*.30);
- gl_FragColor=vec4(color,.72);
+ float f=fbm(uv*1.3+vec2(t,-t*.7));
+ float shimmer=pow(noise(uv*110.+vec2(t*5.,-t*3.)),17.0);
+ float pulse=exp(-22.*length(uv-m*.32))*.09;
+ vec3 brass=vec3(.95,.69,.28), rose=vec3(.94,.28,.42), blue=vec3(.30,.52,.82);
+ vec3 color=mix(brass,rose,smoothstep(.58,.9,f));
+ color=mix(color,blue,smoothstep(.76,.98,f));
+ gl_FragColor=vec4(color,(shimmer*.16+pulse)*(.22+f*.28));
 }`;
 
 /** A subtle, pointer-reactive light field reserved for image-led heroes. */

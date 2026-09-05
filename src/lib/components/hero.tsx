@@ -13,7 +13,7 @@ export default function Hero() {
       if (media.current)
         media.current.style.transform = preference.matches
           ? "none"
-          : `translate3d(0, ${Math.min(window.scrollY * 0.09, 55)}px, 0)`;
+          : `translate3d(0, ${Math.min(window.scrollY * 0.16, 115)}px, 0)`;
     };
     const scroll = () => {
       if (!frame) frame = requestAnimationFrame(update);

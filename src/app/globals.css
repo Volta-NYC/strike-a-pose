@@ -219,16 +219,14 @@ p {
 .hero-photo {
   z-index: 0;
   position: absolute;
-  right: -4%;
-  top: -75px;
-  bottom: -75px;
-  width: 60%;
+  inset: -95px 0;
+  width: 100%;
   will-change: transform;
 }
 .hero-photo img {
   object-fit: cover;
-  object-position: center 44%;
-  transform: scale(1.02);
+  object-position: center 42%;
+  transform: scale(1.08);
 }
 .hero-shade {
   z-index: 1;
@@ -236,10 +234,11 @@ p {
   inset: 0;
   background: linear-gradient(
     90deg,
-    #171510 26%,
-    rgba(23, 21, 16, 0.96) 43%,
-    rgba(23, 21, 16, 0.45) 68%,
-    rgba(23, 21, 16, 0.05)
+    rgba(17, 16, 12, 0.94) 0%,
+    rgba(17, 16, 12, 0.86) 35%,
+    rgba(17, 16, 12, 0.52) 57%,
+    rgba(17, 16, 12, 0.14) 78%,
+    rgba(17, 16, 12, 0.06) 100%
   );
 }
 .event-field {
@@ -249,8 +248,14 @@ p {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.52;
   mix-blend-mode: screen;
+}
+.hero .event-field {
+  left: 42%;
+}
+.page-hero .event-field {
+  left: 52%;
 }
 .hero-content {
   z-index: 2;
@@ -560,24 +565,45 @@ p {
 .site-footer {
   position: relative;
   z-index: 1;
-  padding-top: 55px;
-  background: #090909;
+  overflow: hidden;
+  padding-top: 0;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(174, 111, 45, 0.18), transparent 26rem),
+    #0d0c0a;
   color: #ccc9bd;
+}
+.footer-invitation {
+  min-height: 190px;
+  border-bottom: 1px solid rgba(218, 197, 126, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+}
+.footer-invitation p {
+  max-width: 780px;
+  color: #f5efe4;
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 5.6vw, 5.7rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+.footer-invitation .button {
+  flex: 0 0 auto;
 }
 .footer-grid {
   display: grid;
   grid-template-columns: 1.1fr 1.4fr 0.8fr 1.2fr;
   gap: 40px;
-  padding-bottom: 45px;
+  padding-block: 54px 48px;
 }
-.footer-grid h2 {
-  font:
-    600 0.8rem Arial,
-    sans-serif;
-  letter-spacing: 0.08em;
+.footer-label {
+  font-size: 0.68rem !important;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #dac57e;
-  margin: 10px 0 22px;
+  margin: 10px 0 18px !important;
 }
 .footer-grid p,
 .footer-grid a {
@@ -591,10 +617,40 @@ p {
 .footer-grid a:hover {
   color: var(--gold);
 }
+.footer-brand p {
+  max-width: 205px;
+  line-height: 1.55;
+}
+.footer-phone {
+  color: #f4efe4;
+  font-family: var(--serif);
+  font-size: 1.65rem !important;
+  line-height: 1.05;
+}
 .footer-grid .social-link {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+.instagram-mark {
+  color: var(--gold);
+  font-size: 1.35rem;
+  line-height: 0.8;
+}
+.footer-location {
+  position: relative;
+}
+.footer-location > p:not(.footer-label) {
+  max-width: 220px;
+  line-height: 1.55;
+}
+.footer-star {
+  position: absolute;
+  right: 16px;
+  bottom: -14px;
+  color: var(--gold);
+  font-size: 3.2rem;
+  opacity: 0.72;
 }
 .footer-grid img {
   width: 160px;
@@ -634,6 +690,7 @@ p {
 .page-hero-photo img {
   object-fit: cover;
   object-position: center 44%;
+  transform: scale(1.08);
 }
 .page-hero-shade {
   z-index: 2;
@@ -663,10 +720,10 @@ p {
   color: #f0eadf;
 }
 .js-reveal {
-  opacity: 0;
+  /* Never conceal copy or media while JavaScript/observers are settling. */
+  opacity: 1;
   transform: translate3d(0, 24px, 0);
   transition:
-    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 0.04s;
 }
@@ -768,10 +825,11 @@ p {
     font-size: 3.7rem;
   }
   .hero-photo {
-    width: 66%;
+    inset: -80px 0;
+    width: 100%;
   }
   .hero-shade {
-    background: linear-gradient(90deg, #11100ef5 10%, #11100ed9 40%, #11100e55);
+    background: linear-gradient(90deg, rgba(17, 16, 12, 0.92), rgba(17, 16, 12, 0.58) 62%, rgba(17, 16, 12, 0.18));
   }
   .review-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -803,9 +861,8 @@ p {
     align-items: flex-end;
   }
   .hero-photo {
+    inset: -72px 0;
     width: 100%;
-    top: -30px;
-    bottom: 0;
     opacity: 0.8;
   }
   .hero-photo img {
@@ -814,9 +871,9 @@ p {
   .hero-shade {
     background: linear-gradient(
       0deg,
-      #11100e 2%,
-      #11100ed9 37%,
-      #11100e20 100%
+      rgba(17, 16, 12, 0.96) 2%,
+      rgba(17, 16, 12, 0.78) 40%,
+      rgba(17, 16, 12, 0.16) 100%
     );
   }
   .hero-content {
@@ -925,11 +982,24 @@ p {
     grid-template-columns: 1fr 1fr;
     gap: 25px;
   }
-  .footer-grid > div:nth-child(2) {
+  .footer-invitation {
+    min-height: 0;
+    padding-block: 48px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .footer-invitation p {
+    max-width: 440px;
+  }
+  .footer-grid {
+    padding-block: 42px;
+  }
+  .footer-contact {
     grid-column: 1/-1;
     grid-row: 2;
   }
-  .footer-grid > div:last-child {
+  .footer-location {
     grid-column: 1/-1;
   }
   .footer-bottom {
@@ -1017,6 +1087,53 @@ p {
 .marquee-heading {
   margin-top: 36px;
   margin-bottom: 15px;
+}
+.backdrop-rental {
+  border-top: 1px solid var(--line);
+}
+.backdrop-rental-copy {
+  max-width: 600px;
+  color: var(--muted);
+  margin: -14px 0 34px;
+}
+.backdrop-preview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.backdrop-choice {
+  display: block;
+  min-width: 0;
+}
+.backdrop-choice .photo {
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(120, 92, 34, 0.18);
+}
+.backdrop-choice > span {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  margin-top: 12px;
+}
+.backdrop-choice:hover > span {
+  color: var(--gold-dark);
+}
+.backdrop-more {
+  margin-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.backdrop-more summary {
+  width: fit-content;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+.backdrop-more[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+.backdrop-more .backdrop-expanded {
+  padding-top: 28px;
 }
 .package-grid {
   display: grid;
@@ -1419,6 +1536,9 @@ textarea {
   .backdrop-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .backdrop-preview {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .event-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1447,6 +1567,9 @@ textarea {
   .service-story .photo,
   .service-story .spin-art {
     height: 420px;
+  }
+  .backdrop-preview {
+    grid-template-columns: 1fr;
   }
   .package-grid {
     grid-template-columns: 1fr;

@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { business, packages } from "@/lib/site-data";
+import { backdrops, business, packages } from "@/lib/site-data";
 export default function InquiryForm() {
   const [experience, setExperience] = useState("");
+  const [backdrop, setBackdrop] = useState("");
   const [notes, setNotes] = useState("");
   const [draft, setDraft] = useState("");
   const [copied, setCopied] = useState(false);
@@ -11,7 +12,7 @@ export default function InquiryForm() {
   useEffect(() => {
     const q = new URLSearchParams(window.location.search);
     setExperience(q.get("experience") || "");
-    if (q.has("backdrop")) setNotes(`Preferred backdrop: ${q.get("backdrop")}`);
+    setBackdrop(q.get("backdrop") || "");
     const now = new Date();
     setEarliest(
       `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`,
@@ -28,7 +29,7 @@ export default function InquiryForm() {
       onSubmit={(e) => {
         e.preventDefault();
         const f = new FormData(e.currentTarget);
-        const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone") || "Not provided"}\nEvent date: ${f.get("date")}\nEvent type: ${f.get("type")}\nVenue / city: ${f.get("venue")}\nExperience: ${packages.find((p) => p.id === f.get("experience"))?.name || ({ "red-carpet": "VIP Red Carpet Experience", marquee: "Illuminated Marquee Numbers", "add-ons": "Event add-ons / multiple experiences" } as Record<string, string>)[String(f.get("experience"))] || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
+        const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone") || "Not provided"}\nEvent date: ${f.get("date")}\nEvent type: ${f.get("type")}\nVenue / city: ${f.get("venue")}\nExperience: ${packages.find((p) => p.id === f.get("experience"))?.name || ({ "red-carpet": "VIP Red Carpet Experience", marquee: "Illuminated Marquee Numbers", "add-ons": "Event add-ons / multiple experiences" } as Record<string, string>)[String(f.get("experience"))] || "Help me choose"}\nBackdrop: ${f.get("backdrop") || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
         setDraft(body);
       }}
     >
@@ -109,6 +110,21 @@ export default function InquiryForm() {
             <option>3 Hours</option>
             <option>4 Hours</option>
             <option>Not sure yet</option>
+          </select>
+        </label>
+        <label>
+          Preferred backdrop
+          <select
+            name="backdrop"
+            value={backdrop}
+            onChange={(e) => setBackdrop(e.target.value)}
+          >
+            <option value="">Help me choose</option>
+            {backdrops.map(([name]) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
           </select>
         </label>
         <label className="wide">

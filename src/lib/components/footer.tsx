@@ -1,12 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { business } from "@/lib/site-data";
+
 export default function Footer() {
   return (
     <footer className="site-footer">
+      <div className="footer-invitation container">
+        <p>Make room for the memory.</p>
+        <Link href="/contact" className="button gold">
+          Start your inquiry <span aria-hidden="true">↗</span>
+        </Link>
+      </div>
       <div className="container footer-grid">
-        <div>
-          <Link href="/">
+        <div className="footer-brand">
+          <Link href="/" aria-label="Strike A Pose home">
             <Image
               src="/images/logo-1.webp"
               alt="Strike A Pose"
@@ -14,11 +21,13 @@ export default function Footer() {
               height={108}
             />
           </Link>
-          <p>Capture fun. Strike a pose.</p>
+          <p>Photo booth and party experiences for the moments worth replaying.</p>
         </div>
-        <div>
-          <h2>Let’s celebrate</h2>
-          <a href={business.phoneHref}>{business.phone}</a>
+        <div className="footer-contact">
+          <p className="footer-label">Let’s celebrate</p>
+          <a className="footer-phone" href={business.phoneHref}>
+            {business.phone}
+          </a>
           <a href={`mailto:${business.email}`}>{business.email}</a>
           <a
             className="social-link"
@@ -26,32 +35,21 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              aria-hidden="true"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="18" cy="6" r=".8" />
-            </svg>{" "}
+            <span className="instagram-mark" aria-hidden="true">◎</span>
             @strikeapose5262026
           </a>
         </div>
-        <div>
-          <h2>Explore</h2>
-          <Link href="/services">Our experiences</Link>
+        <div className="footer-links">
+          <p className="footer-label">Explore</p>
+          <Link href="/services">Experiences</Link>
           <Link href="/packages">Packages</Link>
-          <Link href="/backdrops">Backdrops</Link>
-          <Link href="/gallery">Event gallery</Link>
+          <Link href="/gallery">The gallery</Link>
+          <Link href="/contact">Contact & book</Link>
         </div>
-        <div>
-          <h2>Where we celebrate</h2>
+        <div className="footer-location">
+          <p className="footer-label">Serving the party</p>
           <p>{business.area}</p>
+          <span className="footer-star" aria-hidden="true">✦</span>
         </div>
       </div>
       <div className="container footer-bottom">
