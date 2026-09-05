@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageIntro } from "@/lib/components/site-ui";
+import GalleryWebglHero from "@/lib/components/gallery-webgl-hero";
 import { business } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Website Privacy",
@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 export default function Privacy() {
   return (
     <>
-      <PageIntro
+      <GalleryWebglHero
         eyebrow="Your information"
         title="Website privacy."
         description="A simple explanation of how this website handles your inquiry."
-        image="hero-strike-a-pose.avif"
+        className="privacy-webgl-hero"
       />
       <section className="container legal-page">
         <div className="legal-lede">

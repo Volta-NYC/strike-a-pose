@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BookingPolicy from "@/lib/components/booking-policy";
-import { PageIntro } from "@/lib/components/site-ui";
+import GalleryWebglHero from "@/lib/components/gallery-webgl-hero";
 export const metadata: Metadata = {
   title: "Booking Terms",
   description:
@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 export default function Terms() {
   return (
     <>
-      <PageIntro
+      <GalleryWebglHero
         eyebrow="The practical details"
         title="Booking terms."
         description="Please review these details before confirming your event."
-        image="hero-strike-a-pose.avif"
+        className="terms-webgl-hero"
       />
       <section className="container legal-page">
         <div className="legal-lede">

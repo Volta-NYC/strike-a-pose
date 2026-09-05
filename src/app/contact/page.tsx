@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageIntro } from "@/lib/components/site-ui";
+import GalleryWebglHero from "@/lib/components/gallery-webgl-hero";
 import InquiryForm from "@/lib/components/inquiry-form";
 import BookingPolicy from "@/lib/components/booking-policy";
 import { business } from "@/lib/site-data";
@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <>
-      <PageIntro
+      <GalleryWebglHero
         eyebrow="Let’s make memories"
         title="Your event starts here."
         description="Tell us what you’re celebrating. We’ll help you choose the right experience and confirm availability for your date."
-        image="luau-friends.webp"
+        className="contact-webgl-hero"
       />
       <section className="container contact-layout">
         <aside className="contact-details">

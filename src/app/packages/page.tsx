@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CTA, PageIntro } from "@/lib/components/site-ui";
+import { CTA } from "@/lib/components/site-ui";
+import GalleryWebglHero from "@/lib/components/gallery-webgl-hero";
 import { packages, faqs } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Packages",
@@ -10,11 +11,11 @@ export const metadata: Metadata = {
 export default function Packages() {
   return (
     <>
-      <PageIntro
+      <GalleryWebglHero
         eyebrow="Your celebration, your way"
         title="Find your perfect package."
         description="Choose your experience. Pick your hours. Add the details that make it yours."
-        image="luxury-gold-backdrop-8.webp"
+        className="packages-webgl-hero"
       />
       <section className="container package-grid" aria-label="Event packages">
         {packages.map((p) => (
