@@ -49,7 +49,6 @@ export default function Footer() {
         <div className="footer-location">
           <p className="footer-label">Serving the party</p>
           <p>{business.area}</p>
-          <span className="footer-star" aria-hidden="true">✦</span>
         </div>
       </div>
       <div className="container footer-bottom">

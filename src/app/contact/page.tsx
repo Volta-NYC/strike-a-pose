@@ -27,7 +27,7 @@ export default function Contact() {
           <h2>Where we celebrate</h2>
           <p>{business.area}</p>
           <p className="contact-small">Travel fees may apply.</p>
-          <div className="contact-credential">✦ NYC DOE-Approved Vendor</div>
+          <div className="contact-credential">NYC DOE-Approved Vendor</div>
           <p>Serving NYC Schools & Special Events</p>
           <a
             href={business.instagram}

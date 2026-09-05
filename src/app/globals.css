@@ -494,6 +494,10 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   font-family: var(--serif);
   font-size: 1.2rem;
 }
+.service-line:hover {
+  color: var(--gold-dark);
+  border-color: var(--gold-dark);
+}
 .enhance .button {
   margin-top: 24px;
 }
@@ -683,14 +687,6 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .footer-location > p:not(.footer-label) {
   max-width: 220px;
   line-height: 1.55;
-}
-.footer-star {
-  position: absolute;
-  right: 16px;
-  bottom: -14px;
-  color: var(--gold);
-  font-size: 3.2rem;
-  opacity: 0.72;
 }
 .footer-grid img {
   width: 160px;

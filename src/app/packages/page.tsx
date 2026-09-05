@@ -44,9 +44,6 @@ export default function Packages() {
         </div>
         <div className="addon-grid">
           <article>
-            <span className="addon-symbol" aria-hidden="true">
-              ✦
-            </span>
             <h3>VIP Red Carpet Experience</h3>
             <p>
               Make a grand entrance with our VIP Red Carpet Experience,
@@ -63,9 +60,6 @@ export default function Packages() {
             </Link>
           </article>
           <article>
-            <span className="addon-symbol" aria-hidden="true">
-              ✧
-            </span>
             <h3>Illuminated Marquee Numbers</h3>
             <p>
               Make a statement with elegant, illuminated marquee numbers that

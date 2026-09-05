@@ -55,18 +55,18 @@ export default function Home() {
               Turn an entrance into a moment. Bring your theme to life with
               thoughtful details that make the celebration yours.
             </p>
-            <div className="service-line">
+            <Link href="/contact?experience=red-carpet" className="service-line">
               <span>Luxury Red Carpet Experience</span>
               <span aria-hidden="true">↗</span>
-            </div>
-            <div className="service-line">
+            </Link>
+            <Link href="/contact?experience=marquee" className="service-line">
               <span>Illuminated Marquee Numbers</span>
-              <span aria-hidden="true">✦</span>
-            </div>
-            <div className="service-line">
-              <Link href="/services#backdrops">Beautiful Backdrops</Link>
               <span aria-hidden="true">↗</span>
-            </div>
+            </Link>
+            <Link href="/backdrops" className="service-line">
+              <span>Beautiful Backdrops</span>
+              <span aria-hidden="true">↗</span>
+            </Link>
             <Link href="/packages#add-ons" className="button gold">
               Explore Event Add-ons ↗
             </Link>
@@ -160,7 +160,6 @@ export default function Home() {
         </div>
       </section>
       <div className="credential container">
-        <span aria-hidden="true">✦</span>
         <div>
           <strong>NYC DOE-Approved Vendor</strong>
           <p>Serving NYC Schools & Special Events</p>
