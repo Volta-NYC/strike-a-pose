@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="footer-brand">
           <Link href="/" aria-label="Strike A Pose home">
             <Image
-              src="/images/logo-1.webp"
+              src="/images/logo-transparent.png"
               alt="Strike A Pose"
               width={180}
               height={108}

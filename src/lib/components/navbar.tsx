@@ -35,7 +35,7 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/images/logo-1.webp"
+            src="/images/logo-transparent.png"
             alt="Strike A Pose Photo Booth & Party Services"
             width={150}
             height={90}
