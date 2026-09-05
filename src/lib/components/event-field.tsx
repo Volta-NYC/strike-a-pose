@@ -7,24 +7,25 @@ const fragment = `
 precision highp float;
 uniform vec2 resolution, pointer;
 uniform float time;
-float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.)),f.x),f.y);}
-float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;}return v;}
 void main(){
  vec2 uv=(gl_FragCoord.xy*2.-resolution)/min(resolution.x,resolution.y);
- vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.); float t=time*.12;
- vec2 p=uv*1.15;
- float f=fbm(p+vec2(t,-t*.7)+fbm(p*1.7-t));
- float w=fbm(p*1.9+f*1.8+vec2(-t,t));
- f+=exp(-2.8*length(uv-m*.3))*.18;
- vec3 parchment=vec3(.94,.91,.84), brass=vec3(.70,.54,.22), rose=vec3(.62,.31,.29), plum=vec3(.30,.22,.38);
- vec3 color=mix(parchment,brass,smoothstep(.42,.78,f)*.45);
- color=mix(color,rose,smoothstep(.55,.88,w)*.28);
- color=mix(color,plum,smoothstep(.70,.96,f+w*.18)*.15);
- gl_FragColor=vec4(color,.16);
+ vec2 m=(pointer*2.-1.)*vec2(resolution.x/resolution.y,1.);
+ float t=time*.055;
+ vec2 p=uv*.9;
+ p+=vec2(sin(p.y*1.7+t),cos(p.x*1.35-t))*.16;
+ p+=vec2(sin((p.y+p.x)*1.15-t*.7),cos((p.x-p.y)*1.4+t))*.08;
+ p+=(m-p)*exp(-1.5*length(uv-m))*.045;
+ float vein=sin(p.x*3.1+sin(p.y*2.25-t)*1.15+sin((p.x+p.y)*1.4+t)*.65);
+ float fold=sin(p.y*2.6+sin(p.x*1.8+t)*.8);
+ float light=smoothstep(-.78,.92,vein*.72+fold*.28);
+ vec3 paper=vec3(.96,.93,.87), champagne=vec3(.79,.66,.39), rose=vec3(.66,.42,.42), ink=vec3(.24,.18,.20);
+ vec3 color=mix(paper,champagne,smoothstep(.42,.85,light)*.45);
+ color=mix(color,rose,smoothstep(.64,.94,light+fold*.11)*.34);
+ color=mix(color,ink,smoothstep(.82,1.0,1.-light)*.14);
+ gl_FragColor=vec4(color,.20);
 }`;
 
-/** A calm, pointer-reactive field that moves behind page content. */
+/** A slow, seamless marble field that moves behind non-hero page content. */
 export default function EventField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
