@@ -14,17 +14,25 @@ export default function Terms() {
         eyebrow="The practical details"
         title="Booking terms."
         description="Please review these details before confirming your event."
-        image="mirror-booth.webp"
+        image="hero-strike-a-pose.avif"
       />
       <section className="container legal-page">
+        <div className="legal-lede">
+          <p className="eyebrow">Before you reserve your date</p>
+          <h2>Everything you need to know before your event.</h2>
+        </div>
         <BookingPolicy />
-        <h2>Photo & video use</h2>
-        <p>
-          Event photos and videos may be used by Strike A Pose for marketing and
-          promotional purposes. Please discuss any preferences or restrictions
-          with us before your event so they can be addressed in your event
-          agreement.
-        </p>
+        <div className="legal-grid legal-grid--single">
+          <section>
+            <h3>Photo & video use</h3>
+            <p>
+              Event photos and videos may be used by Strike A Pose for marketing
+              and promotional purposes. Please discuss any preferences or
+              restrictions with us before your event so they can be addressed in
+              your event agreement.
+            </p>
+          </section>
+        </div>
         <Link href="/contact" className="text-link">
           Questions about your booking? Contact us ↗
         </Link>

@@ -14,7 +14,7 @@ export default function Services() {
         eyebrow="The experience is everything"
         title="A little glamour. A lot of fun."
         description="From the first pose to the last heartfelt message, give your guests something to remember."
-        image="nova-yacht.webp"
+        image="hero-strike-a-pose.avif"
       />
       <div className="container service-stories">
         {packages.map((p, i) => (
