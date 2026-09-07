@@ -1519,6 +1519,22 @@ textarea {
 .form-note {
   padding-bottom: 24px;
 }
+.media-release {
+  margin-top: 28px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.media-release h3 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.media-release p {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
 .draft-panel {
   border-top: 1px solid var(--line);
   padding-top: 25px;

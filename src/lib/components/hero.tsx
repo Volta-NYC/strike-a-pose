@@ -50,7 +50,8 @@ export default function Hero() {
           to life.
         </p>
         <p className="occasions">
-          Weddings · Birthdays · Graduations · Corporate Events
+          Weddings • Birthdays • Baby Showers • Bar & Bat Mitzvahs •
+          Graduations • Corporate Events & More
         </p>
         <div className="button-row">
           <Link href="/contact" className="button gold">

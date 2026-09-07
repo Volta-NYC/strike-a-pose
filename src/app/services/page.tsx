@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CTA, Photo, SpinArt } from "@/lib/components/site-ui";
+import { CTA, Photo } from "@/lib/components/site-ui";
 import GalleryWebglHero from "@/lib/components/gallery-webgl-hero";
-import { backdrops, packages } from "@/lib/site-data";
+import { packages } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Services",
   description:
@@ -25,11 +25,7 @@ export default function Services() {
             key={p.id}
           >
             <div>
-              {p.image ? (
-                <Photo src={p.image} alt={p.alt} contain />
-              ) : (
-                <SpinArt />
-              )}
+              <Photo src={p.image} alt={p.alt} contain />
             </div>
             <div className="story-copy">
               <p className="eyebrow">{p.short}</p>
@@ -67,60 +63,30 @@ export default function Services() {
               Give your guests the VIP treatment with a red carpet, stanchions
               and ropes, a step-and-repeat backdrop, and a VIP photo experience.
             </p>
-            <h3 className="marquee-heading">Illuminated Marquee Numbers</h3>
-            <p>
-              Make a statement with elegant, illuminated marquee numbers for
-              birthdays, anniversaries, weddings, and special celebrations.
-            </p>
-            <Link href="/contact?experience=add-ons" className="button gold">
-              Ask About Event Add-ons ↗
+            <Link href="/contact?experience=red-carpet" className="button gold">
+              Ask About the Red Carpet Experience ↗
             </Link>
           </div>
         </div>
       </section>
-      <section className="section container backdrop-rental" id="backdrops">
-        <div className="section-heading">
+      <section className="section marquee-service">
+        <div className="container enhance-grid">
+          <Photo
+            src="illuminated-marquee-numbers.png"
+            alt="Illuminated marquee numbers glowing in an elegant event setting"
+          />
           <div>
-            <p className="eyebrow">Set the scene</p>
-            <h2>Rent a backdrop that makes the moment.</h2>
-          </div>
-          <Link href="/contact" className="text-link">
-            Ask about availability ↗
-          </Link>
-        </div>
-        <p className="backdrop-rental-copy">
-          From crisp and classic to full shimmer, choose a backdrop that makes
-          your photo booth feel made for your event.
-        </p>
-        <div className="backdrop-preview">
-          {backdrops.slice(0, 3).map(([name, image]) => (
-            <Link
-              href={`/contact?backdrop=${encodeURIComponent(name)}`}
-              key={name}
-              className="backdrop-choice"
-            >
-              <Photo src={image} alt={`${name} photo booth backdrop`} contain />
-              <span>{name}</span>
+            <p className="eyebrow">A bright finishing touch</p>
+            <h2>Illuminated Marquee Numbers</h2>
+            <p>
+              Make a statement with elegant, illuminated marquee numbers for
+              birthdays, anniversaries, weddings, and special celebrations.
+            </p>
+            <Link href="/contact?experience=marquee" className="button gold">
+              Ask About Marquee Numbers ↗
             </Link>
-          ))}
-        </div>
-        <details className="backdrop-more">
-          <summary>
-            See every backdrop <span aria-hidden="true">+</span>
-          </summary>
-          <div className="backdrop-preview backdrop-expanded">
-            {backdrops.slice(3).map(([name, image]) => (
-              <Link
-                href={`/contact?backdrop=${encodeURIComponent(name)}`}
-                key={name}
-                className="backdrop-choice"
-              >
-                <Photo src={image} alt={`${name} photo booth backdrop`} contain />
-                <span>{name}</span>
-              </Link>
-            ))}
           </div>
-        </details>
+        </div>
       </section>
       <CTA />
     </>

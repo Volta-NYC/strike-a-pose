@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 const links = [
   ["Home", "/"],
   ["Services", "/services"],
+  ["Backdrops", "/backdrops"],
   ["Packages", "/packages"],
   ["Gallery", "/gallery"],
 ];

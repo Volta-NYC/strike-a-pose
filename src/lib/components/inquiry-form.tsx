@@ -35,8 +35,8 @@ export default function InquiryForm() {
     >
       <h2>Tell us about your event</h2>
       <p>
-        Fields marked * are required. Your date is confirmed personally by our
-        team.
+        Fields marked * are required. Our team will personally confirm your
+        event date.
       </p>
       <div className="form-grid">
         <label>
@@ -70,6 +70,7 @@ export default function InquiryForm() {
               "Wedding",
               "Birthday",
               "Sweet 16",
+              "Bar or Bat Mitzvah",
               "Graduation",
               "Baby shower",
               "Corporate event",
@@ -139,6 +140,13 @@ export default function InquiryForm() {
           />
         </label>
       </div>
+      <section className="media-release" aria-labelledby="media-release-title">
+        <h3 id="media-release-title">Photo/Video Media Release</h3>
+        <p>
+          Strike A Pose may use event photos and videos for marketing and
+          promotional purposes.
+        </p>
+      </section>
       <p className="form-note">
         This form prepares an email for you to send to {business.email}. It does
         not submit or reserve your date automatically.

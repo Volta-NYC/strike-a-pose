@@ -27,8 +27,8 @@ export const packages = [
     id: "mirror",
     name: "Mirror Photo Booth",
     short: "A little reflection. A lot of fun.",
-    image: "mirror-booth.webp",
-    alt: "Guest interacting with a freestanding mirror photo booth",
+    image: "mirror-photo-booth.png",
+    alt: "Bride and groom using the interactive mirror photo booth at a wedding",
     description:
       "An interactive mirror experience that invites your guests to pose, play, and take home a memory made just for your event.",
     inclusions: [
@@ -43,8 +43,8 @@ export const packages = [
     id: "360",
     name: "360 Photo Booth",
     short: "Every angle. All the energy.",
-    image: "",
-    alt: "",
+    image: "360-photo-booth.png",
+    alt: "Strike A Pose 360 Photo Booth platform with a rotating camera arm",
     description:
       "Step onto the platform and capture the moment from every angle with exciting, shareable 360° videos, a custom video design, and fun props.",
     inclusions: [
@@ -58,8 +58,8 @@ export const packages = [
     id: "audio",
     name: "Audio Guest Book",
     short: "Their voices. Your forever keepsake.",
-    image: "audio-guest-book.webp",
-    alt: "White and brass vintage telephone for the audio guest book",
+    image: "audio-guest-book-message.png",
+    alt: "Guest leaving a heartfelt message on the audio guest book telephone",
     description:
       "Leave a message. Share a memory. Make it last. Let your guests record heartfelt wishes and spontaneous stories you can listen to long after the celebration.",
     inclusions: [

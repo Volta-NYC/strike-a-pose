@@ -55,6 +55,7 @@ export default function Footer() {
         <div className="footer-links">
           <p className="footer-label">Explore</p>
           <Link href="/services">Experiences</Link>
+          <Link href="/backdrops">Backdrops</Link>
           <Link href="/packages">Packages</Link>
           <Link href="/gallery">The gallery</Link>
           <Link href="/contact">Contact & book</Link>

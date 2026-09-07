@@ -58,11 +58,25 @@ const photos: [string, string, string, number, number][] = [
     606,
   ],
   [
-    "mirror-booth.webp",
+    "mirror-photo-booth.png",
     "A little mirror magic",
-    "Guest using the interactive mirror photo booth",
+    "Bride and groom using the interactive mirror photo booth at a wedding",
+    468,
+    470,
+  ],
+  [
+    "audio-guest-book-message.png",
+    "Leave a message",
+    "Guest recording a message on Strike A Pose's audio guest book",
     358,
     470,
+  ],
+  [
+    "audio-guest-book-phone.png",
+    "Audio Guest Book",
+    "Vintage telephone used for the Strike A Pose audio guest book",
+    598,
+    473,
   ],
 ];
 export default function Gallery() {
