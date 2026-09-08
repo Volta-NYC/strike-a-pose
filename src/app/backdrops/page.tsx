@@ -7,7 +7,7 @@ import { backdrops } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Backdrops",
   description:
-    "Browse the full Strike A Pose backdrop collection, from shimmer walls and florals to crisp classics and custom step-and-repeat designs.",
+    "Browse the full Strike A Pose backdrop collection, from shimmer walls and florals to crisp classics and personalized custom backdrops.",
 };
 
 export default function Backdrops() {

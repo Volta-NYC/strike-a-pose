@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Strike A Pose",
   },
   description:
-    "Premium Nova DSLR, Mirror and 360 photo booths, audio guest books, and event extras. Serving NYC, Long Island, Westchester, Northern NJ, and Connecticut.",
+    "Premium Nova DSLR, Mirror and 360 photo booths, audio guest books, and event extras. Serving NYC, Long Island, Westchester, Northern NJ, Connecticut, and Pennsylvania.",
 };
 export default function RootLayout({
   children,
