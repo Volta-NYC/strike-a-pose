@@ -125,7 +125,7 @@ export default function InquiryForm() {
         )}
         <label className="venue-field">
           Venue Name &amp; Full Address *
-          <span className="field-help">
+          <span className="field-help" id="venue-help">
             Please enter the venue name and complete event address, including
             the city.
           </span>
@@ -134,6 +134,7 @@ export default function InquiryForm() {
             required
             maxLength={200}
             placeholder="Venue name, street address, city"
+            aria-describedby="venue-help"
           />
         </label>
         <fieldset className="wide service-options">

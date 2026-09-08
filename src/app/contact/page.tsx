@@ -6,7 +6,7 @@ import { business } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Contact & Book Now",
   description:
-    "Plan your Strike A Pose experience. Call 917-674-5783 or prepare an event inquiry with your date, location and preferred package.",
+    "Plan your Strike A Pose experience. Call 917-674-5783 or prepare an event inquiry with your date, venue name, full address, and preferred package.",
 };
 export default function Contact() {
   return (
