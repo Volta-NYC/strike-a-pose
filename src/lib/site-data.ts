@@ -4,7 +4,8 @@ export const business = {
   phoneHref: "tel:+19176745783",
   email: "Strikeapose526@gmail.com",
   instagram: "https://www.instagram.com/strikeapose5262026/",
-  facebook: "https://www.facebook.com/StrikeAPoseBX",
+  facebook:
+    "https://www.facebook.com/profile.php?id=61589052313753&rdid=rZS0n65sSIj7DEJO&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1D6Uei6umQ%2F%3Futm_source%3Dchatgpt.com",
   reviews: "https://www.google.com/maps?cid=4310883989383183389",
   area: "Manhattan, Bronx, Brooklyn, Queens & Staten Island · Long Island · Westchester · Northern NJ · Connecticut · Pennsylvania",
 };

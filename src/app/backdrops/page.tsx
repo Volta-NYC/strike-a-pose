@@ -50,7 +50,7 @@ export default function Backdrops() {
           ))}
         </div>
       </section>
-      <CTA showEyebrow={false} />
+      <CTA />
     </>
   );
 }

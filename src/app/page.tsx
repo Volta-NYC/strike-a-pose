@@ -24,7 +24,12 @@ export default function Home() {
         <div className="experience-grid">
           {[packages[0], packages[2], packages[3]].map((p) => (
             <article key={p.id} className="experience">
-              <Link href={`/services#${p.id}`} aria-label={`Explore ${p.name}`}>
+              <h3>{p.name}</h3>
+              <Link
+                className="experience-image"
+                href={`/services#${p.id}`}
+                aria-label={`Explore ${p.name}`}
+              >
                 {p.image ? (
                   <Photo src={p.image} alt={p.alt} contain />
                 ) : (
@@ -32,7 +37,6 @@ export default function Home() {
                 )}
               </Link>
               <div className="experience-copy">
-                <h3>{p.name}</h3>
                 <p>{p.description}</p>
                 <Link href={`/services#${p.id}`} className="text-link">
                   Explore experience ↗

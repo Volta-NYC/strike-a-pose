@@ -55,7 +55,7 @@ export default function InquiryForm() {
           f.get("type") === "Other Celebrations" && celebrationDetail
             ? `Other Celebrations: ${celebrationDetail}`
             : f.get("type");
-        const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone") || "Not provided"}\nEvent date: ${f.get("date")}\nEvent type: ${eventTypeDetail}\nVenue / city: ${f.get("venue")}\nExperiences: ${selectedExperienceNames.join(", ") || "Help me choose"}\nBackdrop: ${f.get("backdrop") || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
+        const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone") || "Not provided"}\nEvent date: ${f.get("date")}\nEvent type: ${eventTypeDetail}\nVenue name & full address: ${f.get("venue")}\nExperiences: ${selectedExperienceNames.join(", ") || "Help me choose"}\nBackdrop: ${f.get("backdrop") || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
         setDraft(body);
       }}
     >
@@ -123,8 +123,18 @@ export default function InquiryForm() {
             />
           </label>
         )}
-        <label>
-          Venue / city *<input name="venue" required maxLength={200} />
+        <label className="venue-field">
+          Venue Name &amp; Full Address *
+          <span className="field-help">
+            Please enter the venue name and complete event address, including
+            the city.
+          </span>
+          <input
+            name="venue"
+            required
+            maxLength={200}
+            placeholder="Venue name, street address, city"
+          />
         </label>
         <fieldset className="wide service-options">
           <legend>Preferred experiences</legend>

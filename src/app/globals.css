@@ -377,15 +377,15 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .experience-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 30px;
+  gap: 24px;
 }
 .photo {
   position: relative;
   aspect-ratio: 4/5;
   overflow: hidden;
-  border: 1px solid rgba(128, 100, 32, 0.45);
+  border: 1px solid rgba(128, 100, 32, 0.26);
   background: #211e17;
-  box-shadow: 0 14px 28px rgba(26, 20, 16, 0.14);
+  box-shadow: 0 8px 20px rgba(26, 20, 16, 0.1);
 }
 .photo img {
   object-fit: cover;
@@ -397,7 +397,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 }
 .experience .photo,
 .experience .spin-art {
-  height: 330px;
+  height: 318px;
   aspect-ratio: auto;
   background: #eeece7;
 }
@@ -405,26 +405,35 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   display: flex;
   flex-direction: column;
 }
+.experience > h3 {
+  min-height: 56px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  margin-bottom: 14px;
+  text-align: center;
+  font-size: 1.65rem;
+}
+.experience-image {
+  display: block;
+}
+.experience-image:hover .photo {
+  border-color: rgba(128, 100, 32, 0.58);
+  box-shadow: 0 10px 24px rgba(26, 20, 16, 0.15);
+}
 .experience-copy {
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 25px 8px 0;
-}
-.experience-copy h3 {
-  font-size: 1.65rem;
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 17px 4px 0;
 }
 .experience-copy p {
   flex: 1;
   color: var(--muted);
   font-size: 0.94rem;
-  margin: 16px 0;
+  margin: 0 0 16px;
 }
 .spin-art {
   position: relative;
@@ -913,9 +922,9 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   .experience .spin-art {
     height: 270px;
   }
-  .experience-copy h3 {
+  .experience > h3 {
     font-size: 1.4rem;
-    min-height: 75px;
+    min-height: 66px;
   }
   .enhance-grid {
     gap: 28px;
@@ -1003,18 +1012,19 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
     grid-template-columns: 1fr;
   }
   .experience-grid {
-    gap: 38px;
+    gap: 32px;
   }
   .experience .photo,
   .experience .spin-art {
     height: 380px;
   }
-  .experience-copy {
-    padding: 22px 8px 0;
-  }
-  .experience-copy h3 {
+  .experience > h3 {
     min-height: 0;
     font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+  .experience-copy {
+    padding: 16px 4px 0;
   }
   .experience-copy p {
     min-height: 0;
@@ -1191,7 +1201,6 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 }
 .backdrop-choice .photo {
   aspect-ratio: 4 / 5;
-  border: 1px solid rgba(120, 92, 34, 0.18);
 }
 .backdrop-choice > span {
   display: block;
@@ -1360,20 +1369,19 @@ details p {
 }
 .event-gallery {
   columns: 3;
-  column-gap: 28px;
+  column-gap: 24px;
 }
 .event-gallery figure {
   break-inside: avoid;
-  margin: 0 0 32px;
+  margin: 0 0 24px;
   background: var(--paper);
-  border: 1px solid rgba(128, 100, 32, 0.45);
-  box-shadow: 0 12px 25px rgba(26, 20, 16, 0.1);
-  padding: 7px;
+  border: 1px solid rgba(128, 100, 32, 0.26);
+  box-shadow: 0 8px 20px rgba(26, 20, 16, 0.09);
+  padding: 5px;
 }
 .gallery-image-link {
   display: block;
   background: #211e17;
-  border: 1px solid rgba(226, 200, 120, 0.65);
 }
 .gallery-image-link img {
   display: block;
@@ -1406,8 +1414,8 @@ details p {
 .video-section video {
   width: 100%;
   max-height: 520px;
-  border: 2px solid var(--gold);
-  box-shadow: 0 18px 38px rgba(26, 20, 16, 0.18);
+  border: 1px solid rgba(128, 100, 32, 0.45);
+  box-shadow: 0 10px 24px rgba(26, 20, 16, 0.12);
   background: #171714;
 }
 .video-section figcaption {
@@ -1483,6 +1491,16 @@ details p {
   font-size: 0.875rem;
   font-weight: 600;
   min-width: 0;
+}
+.form-grid .field-help {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.45;
+  margin-top: -2px;
+}
+.form-grid .venue-field {
+  grid-column: 1/-1;
 }
 .service-options {
   min-width: 0;
