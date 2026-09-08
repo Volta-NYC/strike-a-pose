@@ -67,11 +67,11 @@ export function PageIntro({
     </section>
   );
 }
-export function CTA() {
+export function CTA({ showEyebrow = true }: { showEyebrow?: boolean }) {
   return (
     <section className="cta">
       <div className="container">
-        <p className="eyebrow">Your next unforgettable moment</p>
+        {showEyebrow && <p className="eyebrow">Your next unforgettable moment</p>}
         <h2>
           Ready to make your event
           <br />

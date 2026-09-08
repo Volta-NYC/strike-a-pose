@@ -1,8 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 import { backdrops, business, packages } from "@/lib/site-data";
+
+const experienceOptions = [
+  ...packages.map(({ id, name }) => ({ id, name })),
+  { id: "red-carpet", name: "VIP Red Carpet Experience" },
+  { id: "marquee", name: "Illuminated Marquee Numbers" },
+];
+
 export default function InquiryForm() {
-  const [experience, setExperience] = useState("");
+  const [selectedExperiences, setSelectedExperiences] = useState<string[]>([]);
+  const [eventType, setEventType] = useState("");
   const [backdrop, setBackdrop] = useState("");
   const [notes, setNotes] = useState("");
   const [draft, setDraft] = useState("");
@@ -11,7 +19,12 @@ export default function InquiryForm() {
   const [earliest, setEarliest] = useState("");
   useEffect(() => {
     const q = new URLSearchParams(window.location.search);
-    setExperience(q.get("experience") || "");
+    const requestedExperience = q.get("experience");
+    setSelectedExperiences(
+      experienceOptions.some(({ id }) => id === requestedExperience)
+        ? [requestedExperience as string]
+        : [],
+    );
     setBackdrop(q.get("backdrop") || "");
     const now = new Date();
     setEarliest(
@@ -29,7 +42,20 @@ export default function InquiryForm() {
       onSubmit={(e) => {
         e.preventDefault();
         const f = new FormData(e.currentTarget);
-        const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone") || "Not provided"}\nEvent date: ${f.get("date")}\nEvent type: ${f.get("type")}\nVenue / city: ${f.get("venue")}\nExperience: ${packages.find((p) => p.id === f.get("experience"))?.name || ({ "red-carpet": "VIP Red Carpet Experience", marquee: "Illuminated Marquee Numbers", "add-ons": "Event add-ons / multiple experiences" } as Record<string, string>)[String(f.get("experience"))] || "Help me choose"}\nBackdrop: ${f.get("backdrop") || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
+        const selectedExperienceNames = f
+          .getAll("experiences")
+          .map(
+            (id) =>
+              experienceOptions.find((experience) => experience.id === id)
+                ?.name,
+          )
+          .filter((name): name is string => Boolean(name));
+        const celebrationDetail = f.get("celebrationDetail");
+        const eventTypeDetail =
+          f.get("type") === "Other Celebrations" && celebrationDetail
+            ? `Other Celebrations: ${celebrationDetail}`
+            : f.get("type");
+        const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone") || "Not provided"}\nEvent date: ${f.get("date")}\nEvent type: ${eventTypeDetail}\nVenue / city: ${f.get("venue")}\nExperiences: ${selectedExperienceNames.join(", ") || "Help me choose"}\nBackdrop: ${f.get("backdrop") || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
         setDraft(body);
       }}
     >
@@ -62,7 +88,12 @@ export default function InquiryForm() {
         </label>
         <label>
           Event type *
-          <select name="type" required defaultValue="">
+          <select
+            name="type"
+            required
+            value={eventType}
+            onChange={(e) => setEventType(e.target.value)}
+          >
             <option value="" disabled>
               Select an event
             </option>
@@ -75,41 +106,58 @@ export default function InquiryForm() {
               "Baby shower",
               "Corporate event",
               "School event",
-              "Other celebration",
+              "Other Celebrations",
             ].map((s) => (
               <option key={s}>{s}</option>
             ))}
           </select>
         </label>
+        {eventType === "Other Celebrations" && (
+          <label className="wide">
+            What are you celebrating? *
+            <input
+              name="celebrationDetail"
+              required
+              maxLength={200}
+              placeholder="Tell us about your celebration"
+            />
+          </label>
+        )}
         <label>
           Venue / city *<input name="venue" required maxLength={200} />
         </label>
-        <label>
-          Preferred experience
-          <select
-            name="experience"
-            value={experience}
-            onChange={(e) => setExperience(e.target.value)}
-          >
-            <option value="">Help me choose</option>
-            {packages.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.name}
-              </option>
+        <fieldset className="wide service-options">
+          <legend>Preferred experiences</legend>
+          <p>Select all that interest you. We can help you choose, too.</p>
+          <div className="service-options-grid">
+            {experienceOptions.map(({ id, name }) => (
+              <label key={id}>
+                <input
+                  type="checkbox"
+                  name="experiences"
+                  value={id}
+                  checked={selectedExperiences.includes(id)}
+                  onChange={() =>
+                    setSelectedExperiences((current) =>
+                      current.includes(id)
+                        ? current.filter((selectedId) => selectedId !== id)
+                        : [...current, id],
+                    )
+                  }
+                />
+                <span>{name}</span>
+              </label>
             ))}
-            <option value="red-carpet">VIP Red Carpet Experience</option>
-            <option value="marquee">Illuminated Marquee Numbers</option>
-            <option value="add-ons">
-              Event add-ons / multiple experiences
-            </option>
-          </select>
-        </label>
+          </div>
+        </fieldset>
         <label>
           Hours
           <select name="hours" defaultValue="Not sure yet">
             <option>2 Hours</option>
             <option>3 Hours</option>
             <option>4 Hours</option>
+            <option>5 Hours</option>
+            <option>6 Hours</option>
             <option>Not sure yet</option>
           </select>
         </label>

@@ -19,7 +19,6 @@ export default function Contact() {
       />
       <section className="container contact-layout">
         <aside className="contact-details">
-          <p className="eyebrow">Say hello</p>
           <a className="contact-phone" href={business.phoneHref}>
             {business.phone}
           </a>
@@ -36,6 +35,14 @@ export default function Contact() {
             className="text-link"
           >
             Find us on Instagram ↗
+          </a>
+          <a
+            href={business.facebook}
+            target="_blank"
+            rel="noreferrer"
+            className="text-link"
+          >
+            Find us on Facebook ↗
           </a>
         </aside>
         <InquiryForm />

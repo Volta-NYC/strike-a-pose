@@ -4,8 +4,9 @@ export const business = {
   phoneHref: "tel:+19176745783",
   email: "Strikeapose526@gmail.com",
   instagram: "https://www.instagram.com/strikeapose5262026/",
+  facebook: "https://www.facebook.com/StrikeAPoseBX",
   reviews: "https://www.google.com/maps?cid=4310883989383183389",
-  area: "Manhattan, Bronx, Brooklyn, Queens & Staten Island · Long Island · Westchester · Northern NJ · Connecticut",
+  area: "Manhattan, Bronx, Brooklyn, Queens & Staten Island · Long Island · Westchester · Northern NJ · Connecticut · Pennsylvania",
 };
 export const packages = [
   {
@@ -132,5 +133,5 @@ export const backdrops = [
   ["White Flower Wall", "white-flower-wall-backdrop-12.webp"],
   ["Gold Shimmer Wall", "gold-shimmer-wall-backdrop-4.webp"],
   ["Rustic Wood Wall", "rustic-wood-wall-backdrop-7.webp"],
-  ["Custom Step & Repeat", "custom-step-repeat-backdrop-10.webp"],
+  ["Custom Backdrops", "custom-step-repeat-backdrop-10.webp"],
 ];

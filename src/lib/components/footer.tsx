@@ -51,6 +51,22 @@ export default function Footer() {
             </svg>
             @strikeapose5262026
           </a>
+          <a
+            className="social-link"
+            href={business.facebook}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <svg
+              className="facebook-mark"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V4a22 22 0 0 0-2.6-.1c-2.6 0-4.4 1.6-4.4 4.5V10H7v3h3v8h3.7Z" />
+            </svg>
+            Strike A Pose BX
+          </a>
         </div>
         <div className="footer-links">
           <p className="footer-label">Explore</p>

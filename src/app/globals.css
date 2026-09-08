@@ -383,23 +383,9 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   position: relative;
   aspect-ratio: 4/5;
   overflow: hidden;
-  border: 1px solid var(--gold);
+  border: 1px solid rgba(128, 100, 32, 0.45);
   background: #211e17;
   box-shadow: 0 14px 28px rgba(26, 20, 16, 0.14);
-}
-.photo::before,
-.photo::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: 3;
-}
-.photo::before {
-  inset: 6px;
-  border: 1px solid rgba(226, 200, 120, 0.68);
-}
-.photo::after {
-  display: none;
 }
 .photo img {
   object-fit: cover;
@@ -703,6 +689,12 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   gap: 8px;
 }
 .instagram-mark {
+  color: var(--gold);
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 auto;
+}
+.facebook-mark {
   color: var(--gold);
   width: 1.2rem;
   height: 1.2rem;
@@ -1492,6 +1484,49 @@ details p {
   font-weight: 600;
   min-width: 0;
 }
+.service-options {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.service-options legend {
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.service-options > p {
+  margin: 6px 0 12px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 400;
+}
+.service-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.service-options-grid label {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid #bfbcb0;
+  background: #fff;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.35;
+  cursor: pointer;
+}
+.service-options-grid input[type="checkbox"] {
+  width: 1rem;
+  min-width: 1rem;
+  height: 1rem;
+  min-height: 1rem;
+  margin: 0;
+  accent-color: var(--gold-dark);
+}
 .form-grid .wide {
   grid-column: 1/-1;
 }
@@ -1724,6 +1759,9 @@ textarea {
     height: 420px;
   }
   .backdrop-preview {
+    grid-template-columns: 1fr;
+  }
+  .service-options-grid {
     grid-template-columns: 1fr;
   }
   .package-grid {

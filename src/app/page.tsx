@@ -8,7 +8,7 @@ export default function Home() {
       <Hero />
       <div className="occasion-bar">
         <span>Made for your moment</span>
-        <span>NYC · NJ · CT</span>
+        <span>NY · NJ · CT · PA</span>
         <span>Set up. Strike a pose. Celebrate.</span>
       </div>
       <section className="section container">
@@ -93,7 +93,6 @@ export default function Home() {
       <section className="reviews-section section" id="reviews">
         <div className="container">
           <div className="center-heading">
-            <p className="eyebrow">A little guest love</p>
             <h2>
               Loved by Event Hosts
               <br />
