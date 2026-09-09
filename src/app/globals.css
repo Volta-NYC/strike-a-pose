@@ -386,7 +386,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   position: relative;
   aspect-ratio: 4/5;
   overflow: hidden;
-  background: #211e17;
+  background: transparent;
 }
 .photo img {
   object-fit: cover;
@@ -394,7 +394,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   z-index: 1;
 }
 .photo.contain img {
-  object-fit: contain;
+  object-fit: cover;
 }
 .photo.trim img {
   transform: scale(1.028);
@@ -1392,6 +1392,7 @@ details p {
 .event-gallery figure {
   break-inside: avoid;
   margin: 0 0 24px;
+  position: relative;
 }
 .gallery-image-link {
   display: block;
@@ -1401,21 +1402,27 @@ details p {
   display: block;
   width: 100%;
   height: auto;
-  transform: scale(1.022);
+  transform: none;
 }
 .gallery-image-link .trim-gallery-image {
   transform: scale(1.028);
 }
 .event-gallery figcaption {
-  font-family: var(--caption);
-  font-size: 0.72rem;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, rgba(14, 12, 8, 0.82), rgba(14, 12, 8, 0));
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2vw, 2.1rem);
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-align: center;
-  color: var(--ink);
-  line-height: 1.45;
-  padding: 13px 8px 2px;
-  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  text-align: left;
 }
 .video-section {
   display: grid;
@@ -1840,7 +1847,8 @@ textarea {
     column-gap: 0;
   }
   .event-gallery figcaption {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    padding: 12px 14px;
   }
   .video-section {
     grid-template-columns: 1fr;
