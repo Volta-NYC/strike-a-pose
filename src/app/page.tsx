@@ -31,7 +31,7 @@ export default function Home() {
                 aria-label={`Explore ${p.name}`}
               >
                 {p.image ? (
-                  <Photo src={p.image} alt={p.alt} trim={p.id === "360"} />
+                  <Photo src={p.image} alt={p.alt} contain />
                 ) : (
                   <SpinArt />
                 )}
@@ -155,8 +155,8 @@ export default function Home() {
             contain
           />
           <Photo
-            src="nova-luau.webp"
-            alt="The Nova booth ready for a tropical birthday celebration"
+            src="nova-premium-dslr.png"
+            alt="Nova Premium DSLR Photo Booth with studio umbrella at a birthday celebration"
             contain
           />
           <Photo

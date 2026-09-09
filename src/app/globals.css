@@ -1412,6 +1412,9 @@ details p {
 .gallery-image-link .trim-gallery-image {
   transform: scale(1.04);
 }
+.gallery-image-link .uncropped-gallery-image {
+  transform: none;
+}
 .event-gallery figcaption {
   position: absolute;
   z-index: 2;

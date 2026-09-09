@@ -16,11 +16,11 @@ const photos: [string, string, string, number, number][] = [
     603,
   ],
   [
-    "nova-luau.webp",
+    "nova-premium-dslr.png",
     "The booth is ready",
-    "Nova photo booth with professional flash and umbrella at a luau",
-    449,
-    604,
+    "Nova Premium DSLR Photo Booth with studio umbrella at a birthday celebration",
+    762,
+    1042,
   ],
   [
     "luau-friends.webp",
@@ -65,11 +65,11 @@ const photos: [string, string, string, number, number][] = [
     470,
   ],
   [
-    "audio-guest-book-message.png",
+    "audio-guest-book.png",
     "Leave a message",
     "Guest recording a message on Strike A Pose's audio guest book",
-    358,
-    470,
+    624,
+    812,
   ],
   [
     "audio-guest-book-phone.png",
@@ -84,28 +84,38 @@ export default function Gallery() {
     <>
       <GalleryWebglHero />
       <section className="container event-gallery" aria-label="Event photos">
-        {photos.map(([src, caption, alt, width, height]) => (
-          <figure key={src}>
-            <a
-              href={`/images/${src}`}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Open full image: ${caption}`}
-            >
-              <span className="gallery-image-link">
-                <Image
-                  src={`/images/${src}`}
-                  alt={alt}
-                  width={width}
-                  height={height}
-                  sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 42px), 380px"
-                  className={src === "red-carpet.webp" ? "trim-gallery-image" : ""}
-                />
-              </span>
-            </a>
-            <figcaption>{caption}</figcaption>
-          </figure>
-        ))}
+        {photos.map(([src, caption, alt, width, height]) => {
+          const imageClassName =
+            src === "red-carpet.webp"
+              ? "trim-gallery-image"
+              : src === "nova-premium-dslr.png" ||
+                  src === "audio-guest-book.png"
+                ? "uncropped-gallery-image"
+                : "";
+
+          return (
+            <figure key={src}>
+              <a
+                href={`/images/${src}`}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open full image: ${caption}`}
+              >
+                <span className="gallery-image-link">
+                  <Image
+                    src={`/images/${src}`}
+                    alt={alt}
+                    width={width}
+                    height={height}
+                    sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 42px), 380px"
+                    className={imageClassName}
+                  />
+                </span>
+              </a>
+              <figcaption>{caption}</figcaption>
+            </figure>
+          );
+        })}
       </section>
       <section className="section container video-section">
         <div>

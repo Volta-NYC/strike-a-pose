@@ -14,8 +14,8 @@ export const packages = [
     id: "nova",
     name: "Nova Premium DSLR Photo Booth",
     short: "The picture-perfect classic",
-    image: "nova-luau.webp",
-    alt: "Nova DSLR photo booth and studio umbrella at a luau celebration",
+    image: "nova-premium-dslr.png",
+    alt: "Nova Premium DSLR Photo Booth with studio umbrella at a birthday celebration",
     description:
       "Professional-quality photos, fun poses, and instant digital sharing. Our Nova booth brings studio lighting and a personal touch to your celebration.",
     inclusions: [
@@ -60,7 +60,7 @@ export const packages = [
     id: "audio",
     name: "Audio Guest Book",
     short: "Their voices. Your forever keepsake.",
-    image: "audio-guest-book-message.png",
+    image: "audio-guest-book.png",
     alt: "Guest leaving a heartfelt message on the audio guest book telephone",
     description:
       "Leave a message. Share a memory. Make it last. Let your guests record heartfelt wishes and spontaneous stories you can listen to long after the celebration.",
@@ -116,7 +116,7 @@ export const faqs = [
   ],
   [
     "Do you travel?",
-    "Yes. We serve New York, Northern New Jersey, and Connecticut. Travel fees may apply.",
+    "Yes. We serve NY, NJ, CT & PA. Travel fees may apply.",
   ],
   [
     "Can I customize my experience?",
