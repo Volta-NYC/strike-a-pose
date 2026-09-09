@@ -22,7 +22,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="experience-grid">
-          {[packages[0], packages[2], packages[3]].map((p) => (
+          {[packages[0], packages[1], packages[2], packages[3]].map((p) => (
             <article key={p.id} className="experience">
               <h3>{p.name}</h3>
               <Link
