@@ -399,7 +399,11 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .photo.trim img {
   transform: scale(1.028);
 }
-.experience .photo,
+.experience .photo {
+  height: auto !important;
+  aspect-ratio: 4 / 3;
+  background: transparent;
+}
 .experience .spin-art {
   height: 318px;
   aspect-ratio: auto;
