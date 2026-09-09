@@ -31,7 +31,7 @@ export default function Home() {
                 aria-label={`Explore ${p.name}`}
               >
                 {p.image ? (
-                  <Photo src={p.image} alt={p.alt} contain />
+                  <Photo src={p.image} alt={p.alt} />
                 ) : (
                   <SpinArt />
                 )}
@@ -48,10 +48,13 @@ export default function Home() {
       </section>
       <section className="enhance section">
         <div className="container enhance-grid">
-          <Photo
-            src="red-carpet.webp"
-            alt="Red carpet, gold stanchions and a photo booth ready for guests"
-          />
+          <div className="enhance-media">
+            <p className="media-kicker">The VIP Red Carpet Experience</p>
+            <Photo
+              src="red-carpet.webp"
+              alt="Red carpet, gold stanchions and a photo booth ready for guests"
+            />
+          </div>
           <div>
             <p className="eyebrow">The finishing touches</p>
             <h2>Enhance Your Event</h2>
