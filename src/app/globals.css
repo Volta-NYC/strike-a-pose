@@ -396,6 +396,9 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .photo.contain img {
   object-fit: contain;
 }
+.photo.trim img {
+  transform: scale(1.028);
+}
 .experience .photo,
 .experience .spin-art {
   height: 318px;
@@ -600,6 +603,9 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 }
 .preview-grid .photo {
   aspect-ratio: 3/4;
+}
+.preview-grid .photo img {
+  transform: scale(1.022);
 }
 .credential {
   min-height: 190px;
@@ -1395,6 +1401,10 @@ details p {
   display: block;
   width: 100%;
   height: auto;
+  transform: scale(1.022);
+}
+.gallery-image-link .trim-gallery-image {
+  transform: scale(1.028);
 }
 .event-gallery figcaption {
   font-family: var(--caption);

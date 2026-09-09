@@ -31,7 +31,7 @@ export default function Home() {
                 aria-label={`Explore ${p.name}`}
               >
                 {p.image ? (
-                  <Photo src={p.image} alt={p.alt} />
+                  <Photo src={p.image} alt={p.alt} trim={p.id === "360"} />
                 ) : (
                   <SpinArt />
                 )}
@@ -53,6 +53,7 @@ export default function Home() {
             <Photo
               src="red-carpet.webp"
               alt="Red carpet, gold stanchions and a photo booth ready for guests"
+              trim
             />
           </div>
           <div>

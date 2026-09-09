@@ -6,15 +6,19 @@ export function Photo({
   contain = false,
   priority = false,
   className = "",
+  trim = false,
 }: {
   src: string;
   alt: string;
   contain?: boolean;
   priority?: boolean;
   className?: string;
+  trim?: boolean;
 }) {
   return (
-    <div className={`photo ${contain ? "contain" : ""} ${className}`}>
+    <div
+      className={`photo ${contain ? "contain" : ""} ${trim ? "trim" : ""} ${className}`}
+    >
       <Image
         src={`/images/${src}`}
         alt={alt}

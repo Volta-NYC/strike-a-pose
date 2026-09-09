@@ -99,6 +99,7 @@ export default function Gallery() {
                   width={width}
                   height={height}
                   sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 42px), 380px"
+                  className={src === "red-carpet.webp" ? "trim-gallery-image" : ""}
                 />
               </span>
             </a>
