@@ -391,13 +391,14 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .photo img {
   object-fit: cover;
   object-position: center;
+  transform: scale(1.016);
   z-index: 1;
 }
 .photo.contain img {
   object-fit: cover;
 }
 .photo.trim img {
-  transform: scale(1.028);
+  transform: scale(1.04);
 }
 .experience .photo {
   height: auto !important;
@@ -1406,10 +1407,10 @@ details p {
   display: block;
   width: 100%;
   height: auto;
-  transform: none;
+  transform: scale(1.016);
 }
 .gallery-image-link .trim-gallery-image {
-  transform: scale(1.028);
+  transform: scale(1.04);
 }
 .event-gallery figcaption {
   position: absolute;
