@@ -30,11 +30,11 @@ export default function Hero() {
     <section className="hero">
       <div className="hero-photo" ref={media}>
         <Image
-          src="/images/hero-strike-a-pose.avif"
-          alt="Guests celebrating together at a Strike A Pose photo booth event"
+          src="/images/hero-real-celebration.webp"
+          alt="Three guests smiling and posing with props at a Strike A Pose birthday celebration"
           fill
-          sizes="(max-width: 700px) 100vw, 55vw"
-          priority
+          sizes="(max-width: 800px) 100vw, 58vw"
+          preload
         />
       </div>
       <div className="hero-shade" />

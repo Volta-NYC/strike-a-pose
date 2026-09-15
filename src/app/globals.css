@@ -235,13 +235,13 @@ p {
 .hero-photo {
   z-index: 0;
   position: absolute;
-  inset: -95px 0;
-  width: 100%;
+  inset: -95px 0 -95px 42%;
+  width: auto;
   will-change: transform;
 }
 .hero-photo img {
   object-fit: cover;
-  object-position: center 42%;
+  object-position: center top;
 }
 .hero-shade {
   z-index: 1;
@@ -249,10 +249,10 @@ p {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(17, 16, 12, 0.94) 0%,
-    rgba(17, 16, 12, 0.86) 35%,
-    rgba(17, 16, 12, 0.52) 57%,
-    rgba(17, 16, 12, 0.14) 78%,
+    rgba(17, 16, 12, 1) 0%,
+    rgba(17, 16, 12, 0.98) 35%,
+    rgba(17, 16, 12, 0.82) 48%,
+    rgba(17, 16, 12, 0.26) 70%,
     rgba(17, 16, 12, 0.06) 100%
   );
 }
@@ -979,7 +979,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
     opacity: 0.8;
   }
   .hero-photo img {
-    object-position: center 37%;
+    object-position: center top;
   }
   .hero-shade {
     background: linear-gradient(
@@ -1525,6 +1525,14 @@ details p {
   gap: 22px;
   margin-top: 28px;
 }
+.form-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 .form-grid label {
   display: flex;
   flex-direction: column;
@@ -1612,6 +1620,13 @@ textarea {
 }
 .form-note {
   padding-bottom: 24px;
+}
+.inquiry-form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+.inquiry-success {
+  border-color: var(--gold-dark);
 }
 .media-release {
   margin-top: 28px;

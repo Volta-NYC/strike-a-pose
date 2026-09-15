@@ -24,11 +24,10 @@ export default function Privacy() {
           <section>
             <h3>Information you choose to share</h3>
             <p>
-              The inquiry form prepares an email on your device. Form details are
-              not submitted to a website database. When you choose to send the
-              email, your email provider delivers your name, contact information,
-              and event details to Strike A Pose so the team can respond to your
-              request.
+              When you send an inquiry, your name, contact information, and event
+              details are delivered to Strike A Pose so the team can respond to
+              your request. The form does not create an account or reserve your
+              event date.
             </p>
           </section>
           <section>
@@ -37,8 +36,9 @@ export default function Privacy() {
               This website does not set advertising or analytics cookies. The
               hosting provider may process standard request information, such as
               IP addresses and browser details, to deliver and protect the
-              website. Google Maps and Instagram have their own privacy practices
-              and open only when you follow their links.
+              website. An email delivery provider processes the inquiry and sends
+              the confirmation email. Google Maps and Instagram have their own
+              privacy practices and open only when you follow their links.
             </p>
           </section>
           <section>

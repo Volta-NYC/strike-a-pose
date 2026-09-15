@@ -23,11 +23,11 @@ const photos: [string, string, string, number, number][] = [
     1042,
   ],
   [
-    "luau-friends.webp",
-    "A moment with your people",
-    "Friends posing in leis at a tropical birthday celebration",
-    403,
-    610,
+    "anniversary-couple-cropped.webp",
+    "A love worth celebrating",
+    "Couple smiling together at a Strike A Pose anniversary celebration",
+    1122,
+    1402,
   ],
   [
     "nova-yacht.webp",
@@ -37,11 +37,11 @@ const photos: [string, string, string, number, number][] = [
     610,
   ],
   [
-    "nova-guest.webp",
-    "Strike a pose",
-    "Guest posing in front of a gold backdrop with the Nova booth",
-    456,
-    603,
+    "booth-guests-gold-backdrop.png",
+    "The party in full swing",
+    "Two guests posing beside the Strike A Pose booth and gold backdrop",
+    503,
+    649,
   ],
   [
     "red-carpet.webp",

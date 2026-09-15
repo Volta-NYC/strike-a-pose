@@ -10,6 +10,10 @@
 - `Revised  Strike A Pose Blueprint 8.26.26_.docx`: page architecture,
   contact details, vendor credential, FAQs, and booking policy.
 - `Strike A Pose Pictures.docx`: product and real event photographs.
+- `Extra pictures for the website.docx`: additional real event photography. The
+  strongest anniversary portrait and booth-and-guests frame replace two
+  repetitive gallery images; the other supplied frames were intentionally held
+  back to preserve a curated gallery.
 - `asset-sources.json` maps retained local assets to their sources. All rendered
   images and video are in `public`; there are no remote media dependencies.
 
@@ -22,10 +26,12 @@ execute external actions. The user's instructions take priority.
    quotations render as accessible text, with a Google listing link. There is
    no fabricated live rating or automatic-review claim. A live feed needs a
    selected provider or an authenticated API integration.
-2. The contact form prepares a reviewable email, with open-email and copy
-   actions. It explicitly says nothing is submitted or reserved automatically.
-   Direct server submission, accounts, checkout, payments, and calendars were
-   omitted to honor the request to remove backend features entirely.
+2. The contact form posts to a small server route that sends the event details
+   to Strike A Pose and sends the visitor an automatic confirmation. It requires
+   `RESEND_API_KEY` and `INQUIRY_FROM_EMAIL` in the deployment environment.
+   If delivery is unavailable, the visitor receives a clear pre-filled email and
+   copy fallback. The form does not create accounts, checkout, payment, or a
+   calendar booking.
 3. Facebook was not linked. The document supplies a display name, not a verified
    page URL, and the old site links only to facebook.com. Instagram uses the
    exact handle supplied by the client.
@@ -55,7 +61,8 @@ The website privacy page describes the implemented email-based inquiry flow.
 - Hero-only scroll parallax uses requestAnimationFrame and honors live changes
   to prefers-reduced-motion. No image entrance animations or autoplay media.
 - Four package links and all backdrop links prefill the contact form.
-- Native form validation, past-date prevention, and explicit email-draft steps.
+- Native form validation, past-date prevention, server-side validation, a
+  honeypot field, and a clear email fallback if delivery is unavailable.
 - Dedicated page metadata and square logo-derived app icons.
 - Existing contact URL redirects to /contact. Removed starter pages have no
   placeholder replacement.
@@ -63,4 +70,5 @@ The website privacy page describes the implemented email-based inquiry flow.
 ## Delivery
 
 Use the existing GitHub repository and deployment workflow. No separate Sites
-hosting project was created, and no hosting configuration was replaced.
+hosting project was created, and no hosting configuration was replaced. Add the
+two email delivery variables from the README before publishing the inquiry form.

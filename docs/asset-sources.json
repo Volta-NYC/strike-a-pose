@@ -67,6 +67,11 @@
     }
   ],
   "suppliedDocument": "Strike A Pose Pictures.docx",
+  "additionalSuppliedDocument": "Extra pictures for the website.docx",
+  "additionalDocumentImages": {
+    "image1": "anniversary-couple-cropped.webp (cropped from the supplied anniversary photo)",
+    "image7": "booth-guests-gold-backdrop.png"
+  },
   "documentImages": {
     "2": "nova-yacht",
     "3": "nova-guest",
@@ -78,6 +83,9 @@
     "9": "red-carpet",
     "12": "audio-guest-book",
     "13": "mirror-booth"
+  },
+  "derivedImages": {
+    "hero-real-celebration.webp": "Cropped from luau-celebration.webp for the homepage hero"
   },
   "video": "https://video.wixstatic.com/video/19f63c_49601ef092614854804711fed73709dd/480p/mp4/file.mp4"
 }
