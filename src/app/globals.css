@@ -232,6 +232,15 @@ p {
   display: flex;
   align-items: center;
 }
+.hero-webgl-canvas {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #120d08;
+}
 .hero-photo {
   z-index: 0;
   position: absolute;
@@ -255,6 +264,17 @@ p {
     rgba(17, 16, 12, 0.26) 70%,
     rgba(17, 16, 12, 0.06) 100%
   );
+}
+.hero-webgl .hero-shade {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(11, 9, 7, 0.94) 0%,
+      rgba(11, 9, 7, 0.82) 35%,
+      rgba(11, 9, 7, 0.34) 66%,
+      rgba(11, 9, 7, 0.08) 100%
+    ),
+    linear-gradient(0deg, rgba(8, 7, 5, 0.62), transparent 56%);
 }
 .event-field {
   position: fixed;
@@ -939,6 +959,11 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   .hero-shade {
     background: linear-gradient(90deg, rgba(17, 16, 12, 0.92), rgba(17, 16, 12, 0.58) 62%, rgba(17, 16, 12, 0.18));
   }
+  .hero-webgl .hero-shade {
+    background:
+      linear-gradient(90deg, rgba(11, 9, 7, 0.86), rgba(11, 9, 7, 0.37) 72%, rgba(11, 9, 7, 0.1)),
+      linear-gradient(0deg, rgba(8, 7, 5, 0.7), transparent 58%);
+  }
   .review-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -987,6 +1012,14 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
       rgba(17, 16, 12, 0.96) 2%,
       rgba(17, 16, 12, 0.78) 40%,
       rgba(17, 16, 12, 0.16) 100%
+    );
+  }
+  .hero-webgl .hero-shade {
+    background: linear-gradient(
+      0deg,
+      rgba(8, 7, 5, 0.95) 2%,
+      rgba(8, 7, 5, 0.72) 42%,
+      rgba(8, 7, 5, 0.12) 100%
     );
   }
   .hero-content {
