@@ -6,15 +6,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="occasion-bar">
-        <span>Made for your moment</span>
-        <span>NY · NJ · CT · PA</span>
-        <span>Set up. Strike a pose. Celebrate.</span>
-      </div>
       <section className="section container">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">The life of the party</p>
             <h2>Our Core Experiences</h2>
           </div>
           <Link href="/services" className="text-link">
@@ -36,12 +30,7 @@ export default function Home() {
                   <SpinArt />
                 )}
               </Link>
-              <div className="experience-copy">
-                <p>{p.description}</p>
-                <Link href={`/services#${p.id}`} className="text-link">
-                  Explore experience ↗
-                </Link>
-              </div>
+              <div className="experience-copy"><p>{p.description}</p></div>
             </article>
           ))}
         </div>

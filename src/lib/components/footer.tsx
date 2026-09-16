@@ -5,12 +5,6 @@ import { business } from "@/lib/site-data";
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="footer-invitation container">
-        <p>Make room for the memory.</p>
-        <Link href="/contact" className="button gold">
-          Start your inquiry <span aria-hidden="true">↗</span>
-        </Link>
-      </div>
       <div className="container footer-grid">
         <div className="footer-brand">
           <Link href="/" aria-label="Strike A Pose home">
@@ -68,16 +62,8 @@ export default function Footer() {
             Strike A Pose BX
           </a>
         </div>
-        <div className="footer-links">
-          <p className="footer-label">Explore</p>
-          <Link href="/services">Experiences</Link>
-          <Link href="/backdrops">Backdrops</Link>
-          <Link href="/packages">Packages</Link>
-          <Link href="/gallery">The gallery</Link>
-          <Link href="/contact">Contact & book</Link>
-        </div>
         <div className="footer-location">
-          <p className="footer-label">Serving the party</p>
+          <p className="footer-label">Service Areas</p>
           <p>{business.area}</p>
         </div>
       </div>
