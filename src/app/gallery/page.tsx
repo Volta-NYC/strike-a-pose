@@ -86,7 +86,7 @@ export default function Gallery() {
       <section className="container event-gallery" aria-label="Event photos">
         {photos.map(([src, caption, alt, width, height]) => {
           const imageClassName =
-            src === "red-carpet.webp"
+            src === "red-carpet.webp" || src === "booth-guests-gold-backdrop.png"
               ? "trim-gallery-image"
               : src === "nova-premium-dslr.png" ||
                   src === "audio-guest-book.png"
