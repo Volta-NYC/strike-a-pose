@@ -3,11 +3,13 @@ import GalleryWebglHero from "@/lib/components/gallery-webgl-hero";
 import InquiryForm from "@/lib/components/inquiry-form";
 import BookingPolicy from "@/lib/components/booking-policy";
 import { business } from "@/lib/site-data";
+
 export const metadata: Metadata = {
   title: "Contact & Book Now",
   description:
     "Plan your Strike A Pose experience. Send an event inquiry with your date, venue name, full address, and preferred package, or call 917-674-5783.",
 };
+
 export default function Contact() {
   return (
     <>
@@ -18,32 +20,56 @@ export default function Contact() {
         className="contact-webgl-hero"
       />
       <section className="container contact-layout">
-        <aside className="contact-details">
-          <a className="contact-phone" href={business.phoneHref}>
-            {business.phone}
-          </a>
-          <a href={`mailto:${business.email}`}>{business.email}</a>
-          <h2>Where we celebrate</h2>
-          <p>{business.area}</p>
-          <p className="contact-small">Travel fees may apply.</p>
-          <div className="contact-credential">NYC DOE-Approved Vendor</div>
-          <p>Serving NYC Schools & Special Events</p>
-          <a
-            href={business.instagram}
-            target="_blank"
-            rel="noreferrer"
-            className="text-link"
-          >
-            Find us on Instagram ↗
-          </a>
-          <a
-            href={business.facebook}
-            target="_blank"
-            rel="noreferrer"
-            className="text-link"
-          >
-            Find us on Facebook ↗
-          </a>
+        <aside className="contact-details" aria-label="Contact details">
+          <section className="contact-detail-group">
+            <p className="contact-label">Contact</p>
+            <a className="contact-phone" href={business.phoneHref}>
+              {business.phone}
+            </a>
+            <p className="contact-label contact-label--subtle">Business Email</p>
+            <a href={`mailto:${business.email}`}>{business.email}</a>
+          </section>
+
+          <section className="contact-detail-group">
+            <p className="contact-label">Service Areas</p>
+            <p>{business.area}</p>
+            <p className="contact-small">Travel fees may apply.</p>
+          </section>
+
+          <section className="contact-detail-group">
+            <p className="contact-label">Business Information</p>
+            <p className="contact-credential">NYC DOE-Approved Vendor</p>
+            <p>Serving NYC Schools &amp; Special Events</p>
+            <dl className="contact-hours">
+              <div>
+                <dt>Operating Hours</dt>
+                <dd>
+                  Monday – Sunday
+                  <br />
+                  Available 24/7 for inquiries
+                </dd>
+              </div>
+            </dl>
+          </section>
+
+          <div className="contact-socials">
+            <a
+              href={business.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link"
+            >
+              Find us on Instagram ↗
+            </a>
+            <a
+              href={business.facebook}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link"
+            >
+              Find us on Facebook ↗
+            </a>
+          </div>
         </aside>
         <InquiryForm />
       </section>

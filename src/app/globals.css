@@ -1947,3 +1947,78 @@ textarea {
     padding-bottom: 55px;
   }
 }
+
+/* Contact details are grouped as a single, centered reference panel. */
+.contact-layout {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  align-items: start;
+  gap: clamp(48px, 7vw, 100px);
+}
+.contact-details {
+  padding: clamp(30px, 4vw, 52px);
+  border: 1px solid var(--line);
+  background: rgba(255, 253, 248, 0.64);
+  text-align: center;
+}
+.contact-detail-group + .contact-detail-group {
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+  padding-top: 30px;
+}
+.contact-label {
+  color: var(--gold-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.contact-label--subtle {
+  margin-top: 24px;
+}
+.contact-details > a,
+.contact-details .contact-detail-group > a {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.contact-details .contact-phone {
+  margin-bottom: 0;
+}
+.contact-details .contact-detail-group > p:not(.contact-label):not(.contact-credential),
+.contact-details .contact-hours dd {
+  color: var(--muted);
+}
+.contact-details .contact-credential {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+  color: var(--ink);
+}
+.contact-hours {
+  margin: 24px 0 0;
+}
+.contact-hours dt {
+  color: var(--gold-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.contact-hours dd {
+  margin: 8px 0 0;
+}
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-top: 30px;
+}
+.contact-details .contact-socials .text-link {
+  margin-top: 0;
+}
+@media (max-width: 800px) {
+  .contact-details {
+    display: block;
+  }
+}
