@@ -43,8 +43,8 @@ export default function Navbar() {
           <Image
             src="/images/logo-transparent.png"
             alt="Strike A Pose Photo Booth & Party Services"
-            width={150}
-            height={90}
+            width={176}
+            height={106}
             priority
           />
         </Link>

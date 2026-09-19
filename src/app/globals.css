@@ -150,14 +150,14 @@ p {
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  min-height: 82px;
+  min-height: 92px;
 }
 .brand {
   flex-shrink: 0;
 }
 .brand img {
-  width: 142px;
-  height: 78px;
+  width: 166px;
+  height: 92px;
   object-fit: contain;
 }
 .nav-links {
@@ -887,11 +887,11 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 }
 @media (max-width: 800px) {
   .nav-inner {
-    min-height: 76px;
+    min-height: 82px;
   }
   .brand img {
-    width: 126px;
-    height: 72px;
+    width: 144px;
+    height: 82px;
   }
   .menu-toggle {
     display: block;
@@ -910,7 +910,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
     background: #10100f;
     padding: 20px 28px;
     box-shadow: 0 16px 20px #0003;
-    max-height: calc(100dvh - 76px);
+    max-height: calc(100dvh - 82px);
     overflow-y: auto;
   }
   .nav-links.is-open {
@@ -976,7 +976,7 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
     padding-block: 58px;
   }
   .hero {
-    min-height: calc(100svh - 76px);
+    min-height: calc(100svh - 82px);
     align-items: flex-end;
   }
   .hero-photo {

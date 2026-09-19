@@ -15,7 +15,7 @@ export default function Footer() {
               height={108}
             />
           </Link>
-          <p>Photo booth and party experiences for the moments worth replaying.</p>
+          <p>Creating Memories, One Pose at a Time.</p>
         </div>
         <div className="footer-contact">
           <p className="footer-label">Let’s celebrate</p>
@@ -43,7 +43,7 @@ export default function Footer() {
               <circle cx="12" cy="12" r="4" />
               <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" stroke="none" />
             </svg>
-            @strikeapose5262026
+            Instagram
           </a>
           <a
             className="social-link"
@@ -59,7 +59,7 @@ export default function Footer() {
             >
               <path d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V4a22 22 0 0 0-2.6-.1c-2.6 0-4.4 1.6-4.4 4.5V10H7v3h3v8h3.7Z" />
             </svg>
-            Strike A Pose BX
+            Facebook
           </a>
         </div>
         <div className="footer-location">

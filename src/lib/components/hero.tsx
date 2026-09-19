@@ -35,8 +35,8 @@ export default function Hero() {
     <section className="hero">
       <div className="hero-photo" ref={media}>
         <Image
-          src="/images/hero-real-celebration.webp"
-          alt="Three guests smiling and posing with props at a Strike A Pose birthday celebration"
+          src="/images/hero-strike-a-pose.avif"
+          alt="Guests celebrating under colorful party lights"
           fill
           sizes="(max-width: 800px) 100vw, 58vw"
           priority
