@@ -67,7 +67,7 @@ export default function Footer() {
           <a href={`mailto:${business.email}`}>{business.email}</a>
           <a href={business.phoneHref}>{business.phone}</a>
           <p className="footer-tagline">Creating Memories, One Pose at a Time.</p>
-          <p className="footer-service-areas">NYC ({business.area.replace("Manhattan, Bronx, Brooklyn, Queens & Staten Island", "Manhattan, Bronx, Brooklyn, Queens & Staten Island")})</p>
+          <p className="footer-service-areas">NYC (Manhattan, Bronx, Brooklyn, Queens &amp; Staten Island) • Long Island • Westchester • Northern NJ • Connecticut • Pennsylvania</p>
           <SocialLinks />
         </div>
       )}
