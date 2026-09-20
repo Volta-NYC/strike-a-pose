@@ -203,8 +203,7 @@ export default function InquiryForm() {
           />
         </label>
         <fieldset className="wide service-options">
-          <legend>Preferred experiences</legend>
-          <p>Select all that interest you. We can help you choose, too.</p>
+          <legend>Preferred Experience(s) — Select all that apply</legend>
           <div className="service-options-grid">
             {experienceOptions.map(({ id, name }) => (
               <label key={id}>
@@ -227,14 +226,14 @@ export default function InquiryForm() {
           </div>
         </fieldset>
         <label>
-          Hours
-          <select name="hours" defaultValue="Not sure yet">
+          Hours *
+          <select name="hours" defaultValue="" required>
+            <option value="" disabled>Select number of hours</option>
             <option>2 Hours</option>
             <option>3 Hours</option>
             <option>4 Hours</option>
             <option>5 Hours</option>
             <option>6 Hours</option>
-            <option>Not sure yet</option>
           </select>
         </label>
         <label>
@@ -264,13 +263,9 @@ export default function InquiryForm() {
           />
         </label>
       </div>
-      <section className="media-release" aria-labelledby="media-release-title">
-        <h3 id="media-release-title">Photo/Video Media Release</h3>
-        <p>
-          Strike A Pose may use event photos and videos for marketing and
-          promotional purposes.
-        </p>
-      </section>
+      <p className="media-release">
+        Strike A Pose may use event photos and videos for marketing and promotional purposes.
+      </p>
       <p className="form-note">
         We’ll email you a confirmation after your inquiry is received. Sending an
         inquiry does not reserve your date.

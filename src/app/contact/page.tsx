@@ -20,7 +20,10 @@ export default function Contact() {
         className="contact-webgl-hero"
       />
       <section className="container contact-layout">
+        <InquiryForm />
         <aside className="contact-details" aria-label="Contact details">
+          <h2 className="contact-side-heading">Get in Touch</h2>
+          <p className="contact-side-intro">We’re here to help and happy to answer any questions.</p>
           <section className="contact-detail-group">
             <p className="contact-label">Contact</p>
             <a className="contact-phone" href={business.phoneHref}>
@@ -71,7 +74,6 @@ export default function Contact() {
             </a>
           </div>
         </aside>
-        <InquiryForm />
       </section>
       <section className="container policy-section">
         <BookingPolicy />
