@@ -1461,7 +1461,7 @@ details p {
   font-weight: 500;
   letter-spacing: -0.025em;
   line-height: 1.1;
-  text-align: left;
+  text-align: center;
 }
 .video-section {
   display: flex;

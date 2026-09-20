@@ -51,11 +51,11 @@ const photos: [string, string, string, number, number][] = [
     608,
   ],
   [
-    "nova-detail.webp",
-    "Picture-perfect details",
-    "Close view of the Nova booth with a live preview on screen",
-    337,
-    606,
+    "anniversary-celebration.png",
+    "An anniversary to remember",
+    "Couple posing together for an anniversary celebration",
+    434,
+    661,
   ],
   [
     "mirror-photo-booth.png",
@@ -108,6 +108,7 @@ export default function Gallery() {
                     width={width}
                     height={height}
                     sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 42px), 380px"
+                    quality={100}
                     className={imageClassName}
                   />
                 </span>
