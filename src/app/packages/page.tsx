@@ -88,7 +88,7 @@ export default function Packages() {
               <details key={q}>
                 <summary>
                   {q}
-                  <span aria-hidden="true">+</span>
+                  <span className="faq-toggle" aria-hidden="true">+</span>
                 </summary>
                 <p>{a}</p>
               </details>

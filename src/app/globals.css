@@ -1364,7 +1364,7 @@ summary span {
   font-weight: 400;
   color: var(--gold-dark);
 }
-details[open] summary span {
+details[open] summary .faq-toggle {
   transform: rotate(45deg);
 }
 details p {
