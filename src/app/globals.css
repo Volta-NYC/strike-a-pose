@@ -2391,3 +2391,24 @@ textarea {
     padding: 4px 20px 20px;
   }
 }
+
+/* Keep the contact details legible and visually aligned. */
+.footer-socials .social-icon {
+  display: block;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  overflow: visible;
+}
+.contact-layout .contact-email {
+  font-weight: 700;
+}
+.contact-layout .contact-service-areas {
+  max-width: 34ch;
+  margin-inline: auto;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.policy-item summary > span:not(.policy-number) {
+  color: #111;
+}
