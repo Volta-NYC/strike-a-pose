@@ -37,6 +37,13 @@ const photos: [string, string, string, number, number][] = [
     610,
   ],
   [
+    "nova-guest.webp",
+    "Ready to celebrate",
+    "Guest posing beside the Strike A Pose Nova photo booth and gold backdrop",
+    440,
+    587,
+  ],
+  [
     "booth-guests-gold-backdrop.png",
     "The party in full swing",
     "Two guests posing beside the Strike A Pose booth and gold backdrop",
@@ -49,13 +56,6 @@ const photos: [string, string, string, number, number][] = [
     "Full red carpet setup leading to a photo booth",
     503,
     608,
-  ],
-  [
-    "anniversary-celebration.png",
-    "An anniversary to remember",
-    "Couple posing together for an anniversary celebration",
-    434,
-    661,
   ],
   [
     "mirror-photo-booth.png",
