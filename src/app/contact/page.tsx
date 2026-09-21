@@ -30,19 +30,7 @@ export default function Contact() {
               {business.phone}
             </a>
             <p className="contact-label contact-label--subtle">Business Email</p>
-            <a href={`mailto:${business.email}`}>{business.email}</a>
-          </section>
-
-          <section className="contact-detail-group">
-            <p className="contact-label">Service Areas</p>
-            <p>{business.area}</p>
-            <p className="contact-small">Travel fees may apply.</p>
-          </section>
-
-          <section className="contact-detail-group">
-            <p className="contact-label">Business Information</p>
-            <p className="contact-credential">NYC DOE-Approved Vendor</p>
-            <p>Serving NYC Schools &amp; Special Events</p>
+            <a className="contact-email" href={`mailto:${business.email}`}>{business.email}</a>
             <dl className="contact-hours">
               <div>
                 <dt>Operating Hours</dt>
@@ -53,6 +41,17 @@ export default function Contact() {
                 </dd>
               </div>
             </dl>
+          </section>
+
+          <section className="contact-detail-group">
+            <p className="contact-label">Service Areas</p>
+            <p className="contact-service-areas">{business.area}</p>
+            <p className="contact-small">Travel fees may apply.</p>
+          </section>
+
+          <section className="contact-detail-group">
+            <p className="contact-credential">NYC DOE-Approved Vendor</p>
+            <p>Serving NYC Schools &amp; Special Events</p>
           </section>
 
           <div className="contact-socials">

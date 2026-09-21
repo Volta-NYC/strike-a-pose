@@ -7,7 +7,7 @@ export const business = {
   facebook:
     "https://www.facebook.com/profile.php?id=61589052313753&rdid=rZS0n65sSIj7DEJO&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1D6Uei6umQ%2F%3Futm_source%3Dchatgpt.com",
   reviews: "https://www.google.com/maps?cid=4310883989383183389",
-  area: "Manhattan, Bronx, Brooklyn, Queens & Staten Island · Long Island · Westchester · Northern NJ · Connecticut · Pennsylvania",
+  area: "NYC (Manhattan, Bronx, Brooklyn, Queens & Staten Island) · Long Island · Westchester · Northern NJ · Connecticut · Pennsylvania",
 };
 export const packages = [
   {
