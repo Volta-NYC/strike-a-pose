@@ -68,7 +68,7 @@ export default function InquiryForm() {
           f.get("type") === "Other Celebrations" && celebrationDetail
             ? `Other Celebrations: ${celebrationDetail}`
             : f.get("type");
-        const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone") || "Not provided"}\nEvent date: ${f.get("date")}\nEvent type: ${eventTypeDetail}\nVenue name & full address: ${f.get("venue")}\nExperiences: ${selectedExperienceNames.join(", ") || "Help me choose"}\nBackdrop: ${f.get("backdrop") || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
+        const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone")}\nEvent date: ${f.get("date")}\nEvent type: ${eventTypeDetail}\nVenue name & full address: ${f.get("venue")}\nExperiences: ${selectedExperienceNames.join(", ") || "Help me choose"}\nBackdrop: ${f.get("backdrop") || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
         setDraft(body);
         setSubmission({ status: "sending", message: "" });
 
@@ -145,8 +145,8 @@ export default function InquiryForm() {
           />
         </label>
         <label>
-          Phone number
-          <input name="phone" type="tel" autoComplete="tel" maxLength={40} />
+          Phone number *
+          <input name="phone" type="tel" required autoComplete="tel" maxLength={40} />
         </label>
         <label>
           Event date *<input name="date" type="date" min={earliest} required />
@@ -243,7 +243,7 @@ export default function InquiryForm() {
             value={backdrop}
             onChange={(e) => setBackdrop(e.target.value)}
           >
-            <option value="">Help me choose</option>
+            <option value="" disabled>Select a backdrop</option>
             {backdrops.map(([name]) => (
               <option key={name} value={name}>
                 {name}
