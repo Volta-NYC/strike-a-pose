@@ -71,6 +71,14 @@ export default function Contact() {
             >
               Find us on Facebook ↗
             </a>
+            <a
+              href={business.tiktok}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link"
+            >
+              Find us on TikTok ↗
+            </a>
           </div>
         </aside>
       </section>

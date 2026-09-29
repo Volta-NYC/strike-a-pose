@@ -11,6 +11,7 @@ function SocialLinks({ labeled = false }: SocialLinksProps) {
   return (
     <div className="footer-socials" aria-label="Strike A Pose social links">
       <a
+        className="social-link--instagram"
         href={business.instagram}
         target="_blank"
         rel="noreferrer"
@@ -22,6 +23,7 @@ function SocialLinks({ labeled = false }: SocialLinksProps) {
         {labeled && <span>Instagram</span>}
       </a>
       <a
+        className="social-link--facebook"
         href={business.facebook}
         target="_blank"
         rel="noreferrer"
@@ -31,6 +33,18 @@ function SocialLinks({ labeled = false }: SocialLinksProps) {
           <path d="M13.5 22v-8h2.8l.42-3.1H13.5V8.92c0-.9.27-1.51 1.57-1.51h1.68V4.64A22.9 22.9 0 0 0 14.3 4c-2.43 0-4.1 1.48-4.1 4.2v2.7H7.45V14h2.76v8h3.29Z" />
         </svg>
         {labeled && <span>Facebook</span>}
+      </a>
+      <a
+        className="social-link--tiktok"
+        href={business.tiktok}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Strike A Pose on TikTok"
+      >
+        <svg className="social-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.6 7.08a5.6 5.6 0 0 1-3.35-1.1A5.63 5.63 0 0 1 14.2 2h-3.45v13.25a2.75 2.75 0 1 1-2.75-2.75c.3 0 .6.05.88.15V9.13a6.2 6.2 0 0 0-.88-.06 6.2 6.2 0 1 0 6.2 6.2V9.55a9.05 9.05 0 0 0 5.4 1.8Z" />
+        </svg>
+        {labeled && <span>TikTok</span>}
       </a>
     </div>
   );
@@ -45,7 +59,7 @@ export default function Footer() {
       {isContactPage ? (
         <div className="container footer-contact-layout">
           <Link className="footer-contact-brand" href="/" aria-label="Strike A Pose home">
-            <Image src="/images/logo-transparent.png" alt="Strike A Pose" width={220} height={132} />
+            <Image src="/images/logo-transparent.png" alt="Strike A Pose" width={220} height={132} quality={100} />
           </Link>
           <div className="footer-contact-message">
             <p>Creating Memories, One Pose at a Time.</p>
@@ -60,7 +74,7 @@ export default function Footer() {
       ) : (
         <div className="container footer-full-layout">
           <Link className="footer-full-brand" href="/" aria-label="Strike A Pose home">
-            <Image src="/images/logo-transparent.png" alt="Strike A Pose" width={180} height={108} />
+            <Image src="/images/logo-transparent.png" alt="Strike A Pose" width={180} height={108} quality={100} />
           </Link>
           <a href={`mailto:${business.email}`}>{business.email}</a>
           <a href={business.phoneHref}>{business.phone}</a>

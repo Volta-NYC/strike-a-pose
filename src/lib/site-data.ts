@@ -6,6 +6,7 @@ export const business = {
   instagram: "https://www.instagram.com/strikeapose5262026/",
   facebook:
     "https://www.facebook.com/profile.php?id=61589052313753&rdid=rZS0n65sSIj7DEJO&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1D6Uei6umQ%2F%3Futm_source%3Dchatgpt.com",
+  tiktok: "https://www.tiktok.com/@strike.a.pose92",
   reviews: "https://www.google.com/maps?cid=4310883989383183389",
   area: "NYC (Manhattan, Bronx, Brooklyn, Queens & Staten Island) · Long Island · Westchester · Northern NJ · Connecticut · Pennsylvania",
 };
@@ -60,7 +61,7 @@ export const packages = [
     id: "audio",
     name: "Audio Guest Book",
     short: "Their voices. Your forever keepsake.",
-    image: "audio-guest-book.png",
+    image: "audio-guest-book-telephone.png",
     alt: "Guest leaving a heartfelt message on the audio guest book telephone",
     description:
       "Leave a message. Share a memory. Make it last. Let your guests record heartfelt wishes and spontaneous stories you can listen to long after the celebration.",
@@ -121,6 +122,10 @@ export const faqs = [
   [
     "Can I customize my experience?",
     "Absolutely. Personalized photo designs, backdrops, and add-ons are available.",
+  ],
+  [
+    "Can I Extend My Event for Additional Hours?",
+    "Yes, additional hours can be added to your event at an hourly rate, subject to availability.",
   ],
 ];
 export const backdrops = [
