@@ -17,7 +17,7 @@ const photos: [string, string, string, number, number][] = [
   ],
   [
     "nova-premium-dslr.png",
-    "The booth is ready",
+    "Let the fun begin",
     "Nova Premium DSLR Photo Booth with studio umbrella at a birthday celebration",
     762,
     1042,
@@ -38,7 +38,7 @@ const photos: [string, string, string, number, number][] = [
   ],
   [
     "nova-guest.webp",
-    "Ready to celebrate",
+    "Time to make memories",
     "Guest posing beside the Strike A Pose Nova photo booth and gold backdrop",
     440,
     587,
@@ -65,18 +65,11 @@ const photos: [string, string, string, number, number][] = [
     470,
   ],
   [
-    "audio-guest-book.png",
-    "Leave a message",
-    "Guest recording a message on Strike A Pose's audio guest book",
-    624,
-    812,
-  ],
-  [
-    "audio-guest-book-phone.png",
+    "audio-guest-book-telephone.png",
     "Audio Guest Book",
-    "Vintage telephone used for the Strike A Pose audio guest book",
-    598,
-    473,
+    "Elegant audio guest book telephone booth at an event",
+    1536,
+    1024,
   ],
 ];
 export default function Gallery() {
@@ -89,7 +82,7 @@ export default function Gallery() {
             src === "red-carpet.webp" || src === "booth-guests-gold-backdrop.png"
               ? "trim-gallery-image"
               : src === "nova-premium-dslr.png" ||
-                  src === "audio-guest-book.png"
+                  src === "audio-guest-book-telephone.png"
                 ? "uncropped-gallery-image"
                 : "";
 
