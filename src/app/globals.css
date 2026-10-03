@@ -1271,10 +1271,8 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
 .package-card {
   padding: 38px;
   border: 1px solid var(--line);
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 5;
-  row-gap: 0;
+  display: flex;
+  flex-direction: column;
   scroll-margin-top: 110px;
   background: linear-gradient(135deg, #f7f5ee, white 50%);
 }
@@ -1302,9 +1300,8 @@ main > section:not(.hero):not(.page-hero):not(.reviews-section):not(.cta) {
   color: #9e9783;
 }
 .package-card .button {
-  align-self: end;
-  justify-self: start;
-  margin-top: 10px;
+  align-self: flex-start;
+  margin-top: auto;
 }
 .addon-grid {
   display: grid;
