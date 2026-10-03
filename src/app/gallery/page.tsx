@@ -87,7 +87,14 @@ export default function Gallery() {
                 : "";
 
           return (
-            <figure key={src}>
+            <figure
+              className={
+                src === "anniversary-couple-cropped.webp"
+                  ? "gallery-item--anniversary"
+                  : undefined
+              }
+              key={src}
+            >
               <a
                 href={`/images/${src}`}
                 target="_blank"
