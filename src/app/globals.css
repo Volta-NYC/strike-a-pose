@@ -2413,15 +2413,16 @@ textarea {
   color: #111;
 }
 
-.hours-note {
-  margin: -8px 0 24px;
-  color: var(--muted);
-  font-size: 0.84rem;
-  line-height: 1.5;
-}
 .footer-socials .social-link--instagram { color: #d62976; }
 .footer-socials .social-link--facebook { color: #1877f2; }
 .footer-socials .social-link--tiktok { color: #111; }
 .site-footer--contact .footer-socials .social-link--instagram { color: #f44c92; }
 .site-footer--contact .footer-socials .social-link--facebook { color: #4d8dff; }
 .site-footer--contact .footer-socials .social-link--tiktok { color: #fff; }
+
+/* Keep the anniversary caption clear of the couple's faces. */
+.gallery-item--anniversary figcaption {
+  top: auto;
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(14, 12, 8, 0.86), rgba(14, 12, 8, 0));
+}

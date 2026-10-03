@@ -25,9 +25,6 @@ export default function Packages() {
             <p className="hours">
               2 Hours <span>·</span> 3 Hours <span>·</span> 4 Hours
             </p>
-            <p className="hours-note">
-              Additional hours available, subject to availability and an hourly rate.
-            </p>
             <ul className="inclusion-list">
               {p.inclusions.map((x) => (
                 <li key={x}>{x}</li>
