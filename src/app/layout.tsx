@@ -4,6 +4,7 @@ import Navbar from "@/lib/components/navbar";
 import Footer from "@/lib/components/footer";
 import MotionOrchestrator from "@/lib/components/motion-orchestrator";
 import EventField from "@/lib/components/event-field";
+import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: {
     default: "Strike A Pose | Photo Booth & Event Experiences",
@@ -30,6 +31,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
