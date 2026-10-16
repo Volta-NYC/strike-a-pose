@@ -1548,9 +1548,32 @@ details p {
 }
 .form-grid {
   display: grid;
+  border: 0;
+  padding: 0;
+  min-width: 0;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
-  margin-top: 28px;
+  margin: 28px 0 0;
+}
+.form-errors {
+  margin-top: 22px;
+  padding: 16px;
+  border: 1px solid #a00d0d;
+  color: #a00d0d;
+  background: #fff7f5;
+}
+.form-errors h3 {
+  font-size: 1rem;
+}
+.form-errors ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+.form-errors a {
+  text-decoration: underline;
+}
+.form-grid [aria-invalid="true"] {
+  border-color: #a00d0d;
 }
 .form-honeypot {
   position: absolute;

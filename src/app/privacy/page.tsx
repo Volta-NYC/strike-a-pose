@@ -36,8 +36,9 @@ export default function Privacy() {
               This website does not set advertising or analytics cookies. The
               hosting provider may process standard request information, such as
               IP addresses and browser details, to deliver and protect the
-              website. An email delivery provider processes the inquiry and sends
-              the confirmation email. Google Maps and Instagram have their own
+              website. Inquiry details are stored in a private Google Sheet
+              managed by Strike A Pose so the team can follow up. Google Maps
+              and Instagram have their own
               privacy practices and open only when you follow their links.
             </p>
           </section>

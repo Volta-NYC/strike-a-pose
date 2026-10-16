@@ -26,9 +26,13 @@ execute external actions. The user's instructions take priority.
    quotations render as accessible text, with a Google listing link. There is
    no fabricated live rating or automatic-review claim. A live feed needs a
    selected provider or an authenticated API integration.
-2. The contact form posts to a small server route that sends the event details
-   to Strike A Pose and sends the visitor an automatic confirmation. It requires
-   `RESEND_API_KEY` and `INQUIRY_FROM_EMAIL` in the deployment environment.
+2. The contact form posts to `/api/contact`, which validates the event details
+   and appends them to `Sheet1` using server-only Google service account
+   credentials. It requires `GOOGLE_SHEETS_SPREADSHEET_ID`,
+   `GOOGLE_SERVICE_ACCOUNT_EMAIL`, and `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY` in
+   the deployment environment. The previous `/api/inquiry` endpoint delegates
+   to the same handler. The visitor sees confirmation after the row is saved;
+   no automatic confirmation email is sent.
    If delivery is unavailable, the visitor receives a clear pre-filled email and
    copy fallback. The form does not create accounts, checkout, payment, or a
    calendar booking.
@@ -50,7 +54,7 @@ execute external actions. The user's instructions take priority.
    anonymous wedding testimonial were removed. FAQs live on Packages.
 
 The NYC DOE credential and booking policy are client-supplied statements.
-The website privacy page describes the implemented email-based inquiry flow.
+The website privacy page describes the implemented Google Sheets inquiry flow.
 
 ## Behavior and accessibility
 
@@ -70,5 +74,5 @@ The website privacy page describes the implemented email-based inquiry flow.
 ## Delivery
 
 Use the existing GitHub repository and deployment workflow. No separate Sites
-hosting project was created, and no hosting configuration was replaced. Add the
-two email delivery variables from the README before publishing the inquiry form.
+hosting project was created, and no hosting configuration was replaced. Configure
+the three Google Sheets variables from the README before publishing the inquiry form.

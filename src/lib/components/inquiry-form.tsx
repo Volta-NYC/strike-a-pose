@@ -1,12 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
-import { backdrops, business, packages } from "@/lib/site-data";
-
-const experienceOptions = [
-  ...packages.map(({ id, name }) => ({ id, name })),
-  { id: "red-carpet", name: "VIP Red Carpet Experience" },
-  { id: "marquee", name: "Illuminated Marquee Numbers" },
-];
+import { useEffect, useRef, useState } from "react";
+import { backdrops, business } from "@/lib/site-data";
+import {
+  earliestEventDate,
+  eventTypes,
+  experienceOptions,
+  hourOptions,
+  validateContact,
+  type ContactErrors,
+  type ContactField,
+  type ContactResponse,
+} from "@/lib/contact";
 
 type Submission = {
   status: "idle" | "sending" | "success" | "error";
@@ -22,6 +26,9 @@ export default function InquiryForm() {
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
   const [earliest, setEarliest] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<ContactErrors>({});
+  const errorSummary = useRef<HTMLElement>(null);
+  const sending = useRef(false);
   const [submission, setSubmission] = useState<Submission>({
     status: "idle",
     message: "",
@@ -35,24 +42,33 @@ export default function InquiryForm() {
         : [],
     );
     setBackdrop(q.get("backdrop") || "");
-    const now = new Date();
-    setEarliest(
-      `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`,
-    );
+    setEarliest(earliestEventDate());
   }, []);
+  useEffect(() => {
+    if (Object.keys(fieldErrors).length) errorSummary.current?.focus();
+  }, [fieldErrors]);
+
+  const fieldProps = (field: ContactField, description?: string) => ({
+    id: `contact-${field}`,
+    "aria-invalid": fieldErrors[field] ? true as const : undefined,
+    "aria-describedby": [description, fieldErrors[field] ? `contact-${field}-error` : ""].filter(Boolean).join(" ") || undefined,
+  });
   return (
     <form
       className="inquiry-form"
+      aria-busy={submission.status === "sending"}
       onChange={() => {
         setDraft("");
         setCopied(false);
         setCopyError(false);
-        if (submission.status !== "idle") {
+        setFieldErrors({});
+        if (submission.status === "error" || submission.status === "success") {
           setSubmission({ status: "idle", message: "" });
         }
       }}
       onSubmit={async (event) => {
         event.preventDefault();
+        if (sending.current) return;
         const form = event.currentTarget;
         const f = new FormData(form);
         const selectedExperienceNames = f
@@ -68,41 +84,57 @@ export default function InquiryForm() {
           f.get("type") === "Other Celebrations" && celebrationDetail
             ? `Other Celebrations: ${celebrationDetail}`
             : f.get("type");
+        const payload = {
+          name: f.get("name"),
+          email: f.get("email"),
+          phone: f.get("phone"),
+          date: f.get("date"),
+          eventType: f.get("type"),
+          celebrationDetail: celebrationDetail || "",
+          venue: f.get("venue"),
+          experiences: selectedExperienceNames,
+          backdrop: f.get("backdrop") || "",
+          hours: f.get("hours"),
+          notes: f.get("notes"),
+        };
+        const validation = validateContact(payload);
+        if (!validation.valid) {
+          setFieldErrors(validation.errors);
+          setSubmission({ status: "idle", message: "" });
+          return;
+        }
+        setFieldErrors({});
         const body = `Hello Strike A Pose,\n\nI would like to request a quote for my event.\n\nName: ${f.get("name")}\nEmail: ${f.get("email")}\nPhone: ${f.get("phone")}\nEvent date: ${f.get("date")}\nEvent type: ${eventTypeDetail}\nVenue name & full address: ${f.get("venue")}\nExperiences: ${selectedExperienceNames.join(", ") || "Help me choose"}\nBackdrop: ${f.get("backdrop") || "Help me choose"}\nHours: ${f.get("hours")}\n\nEvent details:\n${f.get("notes") || "None added"}\n\nThank you!`;
         setDraft(body);
+        sending.current = true;
         setSubmission({ status: "sending", message: "" });
 
         try {
-          const response = await fetch("/api/inquiry", {
+          const response = await fetch("/api/contact", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              name: f.get("name"),
-              email: f.get("email"),
-              phone: f.get("phone"),
-              date: f.get("date"),
-              eventType: eventTypeDetail,
-              venue: f.get("venue"),
-              experiences: selectedExperienceNames,
-              backdrop: f.get("backdrop"),
-              hours: f.get("hours"),
-              notes: f.get("notes"),
+              ...validation.data,
               website: f.get("website"),
             }),
           });
           const result = (await response.json().catch(() => null)) as
-            | { message?: string }
+            | ContactResponse
             | null;
 
           if (!response.ok) {
+            if (result?.errors && Object.keys(result.errors).length) {
+              setFieldErrors(result.errors);
+              setSubmission({ status: "idle", message: "" });
+              return;
+            }
             throw new Error(result?.message || "We could not send your inquiry.");
           }
+          if (!result?.message) throw new Error("We could not confirm delivery of your inquiry. Please use the email option below or call us directly.");
 
           setSubmission({
             status: "success",
-            message:
-              result?.message ||
-              "Your inquiry has been received and a confirmation email is on its way.",
+            message: result.message,
           });
           form.reset();
           setSelectedExperiences([]);
@@ -117,6 +149,8 @@ export default function InquiryForm() {
                 ? error.message
                 : "We could not send your inquiry.",
           });
+        } finally {
+          sending.current = false;
         }
       }}
     >
@@ -125,18 +159,34 @@ export default function InquiryForm() {
         Fields marked * are required. Our team will personally confirm your
         event date.
       </p>
-      <div className="form-grid">
+      {Object.keys(fieldErrors).length > 0 && (
+        <section className="form-errors" ref={errorSummary} tabIndex={-1} role="alert" aria-labelledby="contact-errors-title">
+          <h3 id="contact-errors-title">Please check your inquiry</h3>
+          <ul>
+            {Object.entries(fieldErrors).map(([field, message]) => (
+              <li key={field} id={`contact-${field}-error`}>
+                <a href={`#contact-${field}`} onClick={(event) => {
+                  event.preventDefault();
+                  document.getElementById(`contact-${field}`)?.focus();
+                }}>{message}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      <fieldset className="form-grid" disabled={submission.status === "sending"} aria-label="Event details">
         <label className="form-honeypot" aria-hidden="true">
           Website
           <input name="website" tabIndex={-1} autoComplete="off" />
         </label>
         <label>
           Your name *
-          <input name="name" required autoComplete="name" maxLength={100} />
+          <input {...fieldProps("name")} name="name" required autoComplete="name" maxLength={100} />
         </label>
         <label>
           Email address *
           <input
+            {...fieldProps("email")}
             name="email"
             type="email"
             required
@@ -146,14 +196,15 @@ export default function InquiryForm() {
         </label>
         <label>
           Phone number *
-          <input name="phone" type="tel" required autoComplete="tel" maxLength={40} />
+          <input {...fieldProps("phone")} name="phone" type="tel" required autoComplete="tel" maxLength={40} />
         </label>
         <label>
-          Event date *<input name="date" type="date" min={earliest} required />
+          Event date *<input {...fieldProps("date")} name="date" type="date" min={earliest} required />
         </label>
         <label>
           Event type *
           <select
+            {...fieldProps("eventType")}
             name="type"
             required
             value={eventType}
@@ -162,17 +213,7 @@ export default function InquiryForm() {
             <option value="" disabled>
               Select an event
             </option>
-            {[
-              "Wedding",
-              "Birthday",
-              "Sweet 16",
-              "Bar or Bat Mitzvah",
-              "Graduation",
-              "Baby shower",
-              "Corporate event",
-              "School event",
-              "Other Celebrations",
-            ].map((s) => (
+            {eventTypes.map((s) => (
               <option key={s}>{s}</option>
             ))}
           </select>
@@ -181,6 +222,7 @@ export default function InquiryForm() {
           <label className="wide">
             What are you celebrating? *
             <input
+              {...fieldProps("celebrationDetail")}
               name="celebrationDetail"
               required
               maxLength={200}
@@ -195,15 +237,15 @@ export default function InquiryForm() {
             the city.
           </span>
           <input
+            {...fieldProps("venue", "venue-help")}
             name="venue"
             required
             maxLength={200}
             placeholder="Venue name, street address, city"
-            aria-describedby="venue-help"
           />
         </label>
-        <fieldset className="wide service-options">
-          <legend>Preferred Experience(s) — Select all that apply</legend>
+        <fieldset {...fieldProps("experiences")} tabIndex={-1} className="wide service-options">
+          <legend>Preferred Experience(s), select all that apply</legend>
           <div className="service-options-grid">
             {experienceOptions.map(({ id, name }) => (
               <label key={id}>
@@ -227,18 +269,15 @@ export default function InquiryForm() {
         </fieldset>
         <label>
           Hours *
-          <select name="hours" defaultValue="" required>
+          <select {...fieldProps("hours")} name="hours" defaultValue="" required>
             <option value="" disabled>Select number of hours</option>
-            <option>2 Hours</option>
-            <option>3 Hours</option>
-            <option>4 Hours</option>
-            <option>5 Hours</option>
-            <option>6 Hours</option>
+            {hourOptions.map((hours) => <option key={hours}>{hours}</option>)}
           </select>
         </label>
         <label>
           Preferred backdrop
           <select
+            {...fieldProps("backdrop")}
             name="backdrop"
             value={backdrop}
             onChange={(e) => setBackdrop(e.target.value)}
@@ -254,6 +293,7 @@ export default function InquiryForm() {
         <label className="wide">
           Anything else we should know?
           <textarea
+            {...fieldProps("notes")}
             name="notes"
             rows={4}
             maxLength={2000}
@@ -262,13 +302,13 @@ export default function InquiryForm() {
             placeholder="Guest count, theme, preferred backdrop, or add-ons…"
           />
         </label>
-      </div>
+      </fieldset>
       <p className="media-release">
         Strike A Pose may use event photos and videos for marketing and promotional purposes.
       </p>
       <p className="form-note">
-        We’ll email you a confirmation after your inquiry is received. Sending an
-        inquiry does not reserve your date.
+        Our team will contact you after reviewing your inquiry. Sending an inquiry
+        does not reserve your date.
       </p>
       <button
         type="submit"
@@ -277,6 +317,9 @@ export default function InquiryForm() {
       >
         {submission.status === "sending" ? "Sending inquiry…" : "Send My Inquiry ↗"}
       </button>
+      <p className="sr-only" role="status">
+        {submission.status === "sending" ? "Sending your inquiry. Please wait." : ""}
+      </p>
       {submission.status === "success" && (
         <section className="draft-panel inquiry-success" aria-live="polite">
           <h3>Thank you, we have your inquiry.</h3>
@@ -290,7 +333,7 @@ export default function InquiryForm() {
       {draft && submission.status === "error" && (
         <section className="draft-panel" aria-label="Your inquiry email">
           <h3>Let’s make sure your inquiry reaches us</h3>
-          <p role="status">
+          <p role="alert">
             {submission.message} You can still open a pre-filled email or copy
             the details to{" "}
             <a href={`mailto:${business.email}`}>{business.email}</a>.
