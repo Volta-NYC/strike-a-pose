@@ -62,4 +62,10 @@ are the available checks.
 
 Reviews are sourced static quotations, not an automatically synchronized feed.
 
+To email each new Sheet row from `tahmid@novusnyc.org` to
+`islamtahmidd@gmail.com`, install the optional
+[Apps Script notification helper](docs/apps-script/README.md). It includes all
+ten columns and checks for new rows once per minute. It runs separately in the
+spreadsheet and does not require any website or Vercel configuration changes.
+
 Deploy through the repository's existing Next.js hosting workflow.
